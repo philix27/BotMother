@@ -1,0 +1,15 @@
+export const EnvVar = {
+    corsOrigin: process.env.CORS_ORIGIN,
+    rl_window: process.env.COMMON_RATE_LIMIT_WINDOW_MS,
+    rl_maxRequest: process.env.COMMON_RATE_LIMIT_MAX_REQUESTS,
+    nodeEnv: process.env.NODE_ENV,
+    port: process.env.PORT,
+    host: process.env.HOST,
+    botKey: process.env.KEY,
+    botTestKey: process.env.TEST_ENCRYPTION_KEY,
+    cdpApiSecret: process.env.CDP_API_SECRET,
+    cdpApiName: process.env.CDP_API_NAME,
+    openAiKey: process.env.OPENAI_API_KEY,
+    openAiOrgId: process.env.OPENAI_ORG_ID,
+    openAiProjectId: process.env.OPENAI_PROJECT_ID,
+}
