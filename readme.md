@@ -1,8 +1,10 @@
-# BotMother
+# Neurobot
+
+![logo](./assets/logo.png)
 
 ## Overview
 
-Basemail is an AI-powered email platform that takes ordinary emails to the next level. By leveraging the domain **basemail.me** as a universal proxy, our system automatically provisions inboxes for any basename. For example, if a user has the name **john.base.eth**, they automatically own the email address **john@basemail.me**. But these aren't your typical emails – they're supercharged AI emails, intelligently summarized and elegantly formatted to make information extraction effortless. On top of that, Basemail offers a voice-enabled inbox where a natural language voice agent lets you interact with every single email in any language.
+Neurobot is an AI-powered chat platform that takes ordinary emails to the next level. By leveraging the domain **basemail.me** as a universal proxy, our system automatically provisions inboxes for any basename. For example, if a user has the name **john.base.eth**, they automatically own the email address **john@basemail.me**. But these aren't your typical emails – they're supercharged AI emails, intelligently summarized and elegantly formatted to make information extraction effortless. On top of that, Basemail offers a voice-enabled inbox where a natural language voice agent lets you interact with every single email in any language.
 
 Built during a 48-hour hackathon, Basemail combines rapid development with modern, scalable AWS serverless architecture, pushing the envelope on what email can do.
 
