@@ -3,12 +3,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 export const EnvVar = {
-    CORS_ORIGIN: process.env.CORS_ORIGIN,
-    COMMON_RATE_LIMIT_WINDOW_MS: process.env.COMMON_RATE_LIMIT_WINDOW_MS,
-    COMMON_RATE_LIMIT_MAX_REQUESTS: process.env.COMMON_RATE_LIMIT_MAX_REQUESTS,
     NODE_ENV: process.env.NODE_ENV,
-    PORT: process.env.PORT,
-    HOST: process.env.HOST,
     KEY: process.env.KEY,
     TEST_ENCRYPTION_KEY: process.env.TEST_ENCRYPTION_KEY,
     CDP_API_SECRET: process.env.CDP_API_SECRET,
