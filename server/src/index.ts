@@ -2,10 +2,12 @@ import { env } from "@/common/utils/envConfig";
 import { app, logger } from "@/server";
 import { Bot } from "./bot";
 import { Gpt } from "./bot/openai";
+import { validateEnvironment } from "./env";
 
 const gpt = new Gpt();
 
 const server = app.listen(env.PORT, () => {
+  validateEnvironment();
   const { NODE_ENV, HOST, PORT } = env;
 
   const bot = new Bot({ai: gpt})

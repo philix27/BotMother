@@ -4,8 +4,8 @@ import OpenAI from "openai";
 export class Gpt {
   constructor() {
     this.client = new OpenAI({
-      organization: EnvVar.openAiOrgId,
-      project: EnvVar.openAiProjectId,
+      organization: EnvVar.OPENAI_ORG_ID,
+      project: EnvVar.OPENAI_PROJECT_ID,
       apiKey: process.env.OPENAI_API_KEY,
     });
   }
