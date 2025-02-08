@@ -4,17 +4,17 @@ import { cn } from 'lib/utils'
 import { AppStores } from 'lib/zustand'
 import { Employee } from 'lib/zustand/employee'
 
-export function MailList(props: {items: Employee[]}) {
+export function MailList(props: { items: Employee[] }) {
   const store = AppStores.useEmployee()
   return (
     <div className="no-scrollbar h-[calc(100vh-80px)] overflow-y-scroll">
       <div className="mb-[150px] flex flex-col gap-2 p-4 pt-0">
-        {props.items.map((item) => (
+        {props.items.map((item, i) => (
           <div
-            key={item.id}
+            key={i}
             className={cn(
               'mb-1 flex flex-col items-start rounded-lg border-primary text-left text-sm shadow-md transition-all hover:bg-accent',
-              store.active === item.key ? item.color : 'bg-card',
+              store.active == item.key ? item.color : 'bg-card',
             )}
             onClick={() => {
               store.update({ active: item.key })
@@ -33,6 +33,7 @@ export function MailList(props: {items: Employee[]}) {
                   <div className="flex items-center">
                     <div className="flex items-center gap-2">
                       <p className="text-lg font-medium">{item.name}</p>
+
                       {!item.read && <span className="flex h-2 w-2 rounded-full bg-blue-600" />}
                     </div>
                   </div>

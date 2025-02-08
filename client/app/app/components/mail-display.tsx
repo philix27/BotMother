@@ -13,7 +13,7 @@ interface MailDisplayProps {
 }
 
 export function MailDisplay({ mail }: MailDisplayProps) {
-  const today = new Date()
+  // const today = new Date()
   const store = AppStores.useEmployee()
 
   // http://localhost:3344/api/v1/employees/send-message
@@ -94,7 +94,6 @@ export function MailDisplay({ mail }: MailDisplayProps) {
               <Button
                 onClick={() => {
                   console.log('Button clicked')
-
                   sendMsg()
                 }}
                 className={cn('rounded-full', mail.color)}

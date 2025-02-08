@@ -10,7 +10,6 @@ import { MailDisplay } from './mail-display'
 import { AppStores } from 'lib/zustand'
 
 export default function PanelInbox() {
-  // const [mail] = useMail()
   const store = AppStores.useEmployee()
 
   return (
@@ -23,7 +22,7 @@ export default function PanelInbox() {
             </a>
             <TabsList className="ml-auto">
               <TabsTrigger value="all" className="mx-2 text-zinc-600 dark:text-zinc-200">
-                All mail
+                All
               </TabsTrigger>
               <TabsTrigger value="unread" className="mx-2 text-zinc-600 dark:text-zinc-200">
                 Unread
@@ -35,22 +34,41 @@ export default function PanelInbox() {
             <form>
               <div className="relative">
                 <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-                <Input placeholder="Search" className="pl-8" />
+                <Input
+                  placeholder="Search"
+                  className="pl-8"
+                  onChange={(e) => {
+                    const text = e.target.value.trim()
+
+                    console.log('text:', text)
+
+                    if (text.length < 1) {
+                      const newD = store.employeesToDisplay.filter((emp) => emp.name.includes(text))
+                      store.update({
+                        employeesToDisplay: newD.length > 0 ? newD : store.employeeData,
+                      })
+                    } else {
+                      store.update({
+                        employeesToDisplay: store.employeeData,
+                      })
+                    }
+                  }}
+                />
               </div>
             </form>
           </div>
           <TabsContent value="all" className="m-0">
-            <MailList items={store.employeeData} />
+            <MailList items={store.employeesToDisplay} />
           </TabsContent>
           <TabsContent value="unread" className="m-0">
-            <MailList items={store.employeeData.filter((item) => !item.read)} />
+            <MailList items={store.employeesToDisplay.filter((item) => !item.read)} />
           </TabsContent>
         </Tabs>
       </ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel defaultSize={70} minSize={40}>
         <MailDisplay
-          mail={store.employeeData.filter((item) => item.key === store.active)[0] || null}
+          mail={store.employeesToDisplay.filter((item) => item.key === store.active)[0] || null}
         />
       </ResizablePanel>
     </>
