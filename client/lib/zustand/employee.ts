@@ -16,7 +16,8 @@ export type IBots = 'General' | 'DeFi' | 'WEB3'
 
 export interface ISlice {
   active?: IEmployees
-  allChat?: { msg: string; time: string }[]
+  allChat?: { msg: string; isMe: boolean; employee: IEmployees }[]
+  chatText?: Record<IEmployees, string>
 }
 
 export interface ISliceUpdate extends Required<ISlice> {
@@ -27,6 +28,18 @@ export interface ISliceUpdate extends Required<ISlice> {
 export const defaultValues: Required<ISlice> = {
   active: 'Crypto',
   allChat: [],
+  chatText: {
+    Crypto: '',
+    Finance: '',
+    TweetGenerator: '',
+    LinkedIn: '',
+    Instagram: '',
+    EmailMarketing: '',
+    'Customer Support': '',
+    JobScout: '',
+    SalesManager: '',
+    DailyMotivation: ''
+  }
 }
 export const useEmployee = create(
   persist<ISliceUpdate>(
@@ -42,7 +55,7 @@ export const useEmployee = create(
         }),
     }),
     {
-      name: 'screens',
+      name: 'employee',
       storage: createJSONStorage(() => localStorage),
     },
   ),

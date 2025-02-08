@@ -10,6 +10,6 @@ const configAtom = atom<Config>({
   selected: mails[0].id,
 })
 
-export function useMail() {
-  return useAtom(configAtom)
-}
+// export function useMail() {
+//   return useAtom(configAtom)
+// }

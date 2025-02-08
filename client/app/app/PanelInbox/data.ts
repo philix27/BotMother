@@ -23,7 +23,7 @@ export const mails: {
     read: true,
     labels: ['meeting', 'work', 'important'],
     img: '/employees/buddy.webp',
-    color: 'bg-blue-200',
+    color: 'bg-blue-500',
     key: 'Crypto',
   },
   {
@@ -36,7 +36,7 @@ export const mails: {
     read: true,
     labels: ['work', 'important'],
     img: '/employees/cassie.webp',
-    color: 'bg-blue-600',
+    color: 'bg-blue-700',
     key: 'Finance',
   },
   {
@@ -49,7 +49,7 @@ export const mails: {
     read: true,
     labels: ['personal'],
     img: '/employees/gigiGreen.webp',
-    color: 'bg-green-500',
+    color: 'bg-green-600',
     key: 'TweetGenerator',
   },
   {
@@ -62,7 +62,7 @@ export const mails: {
     read: false,
     labels: ['work', 'budget'],
     img: '/employees/milliPink.webp',
-    color: 'bg-pink-500',
+    color: 'bg-pink-600',
     key: 'DailyMotivation',
   },
   {

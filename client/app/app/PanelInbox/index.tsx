@@ -8,19 +8,21 @@ import { Search } from 'lucide-react'
 import { MailList } from '../components/mail-list'
 import { mails } from './data'
 import { MailDisplay } from '../components/mail-display'
-import { useMail } from '../use-mail'
+// import { useMail } from '../use-mail'
 import { AppStores } from 'lib/zustand'
 
 export default function PanelInbox() {
-  const [mail] = useMail()
+  // const [mail] = useMail()
   const store = AppStores.useEmployee()
 
   return (
     <>
       <ResizablePanel defaultSize={30} minSize={30} maxSize={35}>
         <Tabs defaultValue="all">
-          <div className="flex h-[60px] items-center px-4 py-2">
-            <h1 className="text-xl font-bold">Employees</h1>
+          <div className="flex h-[60px] items-center px-4 pl-10 py-2">
+            <a href="/">
+              <h1 className="text-xl font-bold text-primary">Employees</h1>
+            </a>
             <TabsList className="ml-auto">
               <TabsTrigger value="all" className="mx-2 text-zinc-600 dark:text-zinc-200">
                 All mail
