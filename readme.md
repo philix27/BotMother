@@ -1,6 +1,6 @@
-# Neurobot
+# Employee.ai
 
-![logo](./assets/logo.png)
+![logo](./assets/cover.jpg)
 
 ## Overview
 
@@ -36,31 +36,32 @@ Employee.ai is composed of three main stacks
 
 ## How It Works
 
-1. **Email Reception:**  
-   Incoming emails are received by AWS SES for the basemail.me domain. A receipt rule routes these emails to an S3 bucket.
+1. **User interface:**  
+  Users selects an employee and sends a message in the form on a natural language to the ai. 
 
-2. **Email Processing:**  
-   A dedicated Lambda function (the mail handler) retrieves the new email from S3, processes its contents, and invokes AI routines to summarize and elegantly format the email data.
+2. **API:**  
+  The message is and employee for which the message was intended is forward to the backend server
 
-3. **AI Enhancements:**  
-   Using the Bedrock stack, emails are transformed into a rich, queryable knowledge base. This includes vector embeddings and semantic processing via Pinecone.
-
-4. **Interactive Inbox:**  
-   Users can interact with their inbox both via a traditional API and a WebSocket-enabled real-time chat interface. A voice-enabled agent further offers natural language interaction with email content.
+3. **Backend & Routing:**  
+  Receives request and determines which agent will handle the message. Appropriate response is the returned to the user.
 
 ## Getting Started
 
 ### Prerequisites
 
-- **AWS Account:** Ensure you have an active AWS account with proper permissions.
-- **AWS CDK:** Install and configure the AWS CDK.
+- **Docker:** To spin up a postgres database
 - **Node.js:** Ensure Node.js and npm/yarn are installed.
+- **PNPM:** Package manager
 - **Environment Variables:** Set the following variables in your deployment environment:
-  - `CLERK_SECRET_KEY`
-  - `DISCORD_WEBHOOK_URL`
-  - `PINECONE_DB`
-  - `PINECONE_SECRET_ARN`
-  - _[Any others as needed]_
+  - `NEXT_PUBLIC_PRIVY_APP_ID`
+  - `OPENAI_API_KEY`
+  - `CDP_API_KEY_NAME`
+  - `CDP_API_KEY_PRIVATE_KEY`
+  - `TWITTER_ACCESS_TOKEN`
+  - `TWITTER_ACCESS_TOKEN_SECRET`
+  - `TWITTER_API_KEY`
+  - `TWITTER_API_SECRET`
+  - `DATABASE_URL`
 
 ### Installation & Deployment
 
@@ -74,43 +75,36 @@ Employee.ai is composed of three main stacks
 2. **Install dependencies:**
 
    ```bash
-   npm install
+   cd client && pnpm install
+   ```
+   ```bash
+   cd ..
+   ```
+   ```bash
+   cd server && pnpm install
    ```
 
-3. **Bootstrap CDK (if needed) & deploy:**
+3. **Run server:**
 
    ```bash
-   npx cdk bootstrap
-   npx cdk deploy
+   npm run dev # in client directory
+   ```
+   ```bash
+   npm run dev # in server directory
    ```
 
-   Deploy each stack as needed:
 
-   - Basemail Mail Stack
-   - Basemail API Stack
-   - Basemail Bedrock Stack
-
-## Usage
-
-- **Email Functionality:**  
-  Once deployed, simply use your basename (e.g., `john`) to access your personalized email inbox at `john@basemail.me`.
-
-- **AI Interaction:**  
-  Access summarized and formatted emails via our web API or use the voice agent for a conversational experience to query and interact with your emails.
-
-- **Real-Time Updates:**  
-  Connect via the provided WebSocket endpoint for live interaction and updates.
 
 ## Future Roadmap
 
-- **Enhanced AI Models:**  
-  Integrate additional machine learning models to further improve summarization and content extraction.
+- **Agent Support:**  
+  Increase the number of agents supported
 
-- **Voice Agent Improvements:**  
-  Expand the voice-enabled functionality with advanced natural language processing and broader language support.
+- **Agent Actions/providers:**  
+  Support more agent actions/providers as these would give room for a better and more effective agents
 
-- **User Interface:**  
-  Develop dedicated client applications (web and mobile) that fully leverage Basemail's backend capabilities.
+- **LLM Support:**  
+ Provide more LLM support such as Deepseek, and Qween, which are cheaper for the end user
 
 ## License
 
@@ -118,4 +112,4 @@ This project is released under the [MIT License](LICENSE).
 
 ## Acknowledgments
 
-Developed as part of a 48-hour hackathon, Basemail is a demonstration of rapid prototyping combined with powerful AWS services and innovative AI integration.
+Developed as part of a 1 week EthGlobal hackathon.
