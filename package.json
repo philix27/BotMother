@@ -18,7 +18,8 @@
     "lint": "pnpm -r run lint",
     "clean": "rimraf node_modules **/node_modules **/dist **/.next **/next-env.d.ts",
     "reset": "rimraf node_modules **/node_modules **/dist **/.next **/next-env.d.ts pnpm-lock.yaml eliza.sqlite twitter-cookies.json",
-    "letsgo": "pnpm i && pnpm run dev"
+    "letsgo": "pnpm i && pnpm run dev",
+    "prepare": "husky"
   },
   "devDependencies": {
     "dotenv": "^16.4.5",

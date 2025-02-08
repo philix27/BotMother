@@ -1,83 +1,76 @@
 'use client'
-
 import * as React from 'react'
-import { cn } from 'lib/utils'
-import { Nav } from './nav'
-import { TooltipProvider } from 'components/ui/tooltip'
-import { ResizablePanelGroup, ResizablePanel } from 'components/ui/resizable'
-import { navData } from './navData'
-import PanelInbox from '../PanelInbox'
-import { AppStores } from 'lib/zustand'
-import type { IViews } from 'lib/zustand/screens'
-import PanelBot from '../PanelBot'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@radix-ui/react-tabs'
+import { Input } from 'components/ui/input'
+import { ResizablePanel, ResizableHandle } from 'components/ui/resizable'
 import { Separator } from 'components/ui/separator'
+import { Search } from 'lucide-react'
+import { MailList } from './sidebar'
+import { MailDisplay } from './mail-display'
+import { AppStores } from 'lib/zustand'
 
-interface MailProps {
-  accounts: {
-    label: string
-    email: string
-    icon: React.ReactNode
-  }[]
-  mails: any[]
-  // mails: Mail[]
-  defaultLayout: number[] | undefined
-  defaultCollapsed?: boolean
-  navCollapsedSize: number
-}
+export default function PanelInbox() {
+  const store = AppStores.useEmployee()
 
-export function Mail({
-  defaultLayout = [20, 32, 48],
-  defaultCollapsed = false,
-  navCollapsedSize,
-}: MailProps) {
-  const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed)
-  const store = AppStores.useView()
-  const settingsStore = AppStores.useSettings()
   return (
-    <TooltipProvider delayDuration={0}>
-      <ResizablePanelGroup
-        direction="horizontal"
-        onLayout={(sizes: number[]) => {
-          settingsStore.update({ defaultLayout: sizes })
-          document.cookie = `react-resizable-panels:layout:mail=${JSON.stringify(sizes)}`
-        }}
-        className="h-full max-h-[800px] items-stretch"
-      >
-        <ResizablePanel
-          defaultSize={defaultLayout[0]}
-          collapsedSize={navCollapsedSize}
-          collapsible={true}
-          minSize={15}
-          maxSize={20}
-          onCollapse={() => {
-            setIsCollapsed(true)
-            settingsStore.update({ defaultCollapsed: true })
-            // document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(true)}`
-          }}
-          onResize={() => {
-            setIsCollapsed(false)
-            settingsStore.update({ defaultCollapsed: false })
-            // document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(false)}`
-          }}
-          className={cn(isCollapsed && 'min-w-[50px] transition-all duration-300 ease-in-out')}
-        >
+    <>
+      <ResizablePanel defaultSize={30} minSize={30} maxSize={35}>
+        <Tabs defaultValue="all">
+          <div className="flex h-[60px] items-center px-4 py-2 pl-10">
+            <a href="/">
+              <h1 className="text-xl font-bold text-primary">Employee.ai</h1>
+            </a>
+            <TabsList className="ml-auto">
+              <TabsTrigger value="all" className="mx-2 text-zinc-600 dark:text-zinc-200">
+                All
+              </TabsTrigger>
+              <TabsTrigger value="unread" className="mx-2 text-zinc-600 dark:text-zinc-200">
+                Unread
+              </TabsTrigger>
+            </TabsList>
+          </div>
           <Separator />
-          <Nav isCollapsed={isCollapsed} links={navData} />
-          <Separator />
-        </ResizablePanel>
-        <ActiveView activeScreen={store.activeScreen} />
-      </ResizablePanelGroup>
-    </TooltipProvider>
-  )
-}
+          <div className="bg-background/95 supports-[backdrop-filter]:bg-background/60 p-4 backdrop-blur">
+            <form>
+              <div className="relative">
+                <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input
+                  placeholder="Search"
+                  className="pl-8"
+                  onChange={(e) => {
+                    const text = e.target.value.trim()
 
-function ActiveView(props: { activeScreen: IViews }) {
-  switch (props.activeScreen) {
-    case 'INBOX':
-      return <PanelInbox />
-    case 'BOTS':
-      return <PanelBot />
-    default:
-      return <PanelInbox />
-  }
+                    console.log('text:', text)
+
+                    if (text.length < 1) {
+                      const newD = store.employeesToDisplay.filter((emp) => emp.name.includes(text))
+                      store.update({
+                        employeesToDisplay: newD.length > 0 ? newD : store.employeeData,
+                      })
+                    } else {
+                      store.update({
+                        employeesToDisplay: store.employeeData,
+                      })
+                    }
+                  }}
+                />
+              </div>
+            </form>
+          </div>
+          <TabsContent value="all" className="m-0">
+            <MailList items={store.employeesToDisplay} />
+          </TabsContent>
+          <TabsContent value="unread" className="m-0">
+            <MailList items={store.employeesToDisplay.filter((item) => !item.read)} />
+          </TabsContent>
+        </Tabs>
+      </ResizablePanel>
+      <ResizableHandle withHandle />
+      <ResizablePanel defaultSize={70} minSize={40}>
+        <MailDisplay
+          mail={store.employeesToDisplay.filter((item) => item.key === store.active)[0] || null}
+        />
+      </ResizablePanel>
+    </>
+  )
 }
