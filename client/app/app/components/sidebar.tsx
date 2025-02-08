@@ -14,7 +14,8 @@ export function MailList(props: { items: Employee[] }) {
             key={i}
             className={cn(
               'mb-1 flex flex-col items-start rounded-lg border-primary text-left text-sm shadow-md transition-all hover:bg-accent',
-              store.active == item.key ? item.color : 'bg-card',
+              store.active == item.key ? "border-primary border-2" : 'bg-card',
+              // store.active == item.key ? item.color : 'bg-card',
             )}
             onClick={() => {
               store.update({ active: item.key })
@@ -28,7 +29,7 @@ export function MailList(props: { items: Employee[] }) {
                 />
               </div>
 
-              <div className={cn('px-4 py-2', store.active === item.key && 'text-white')}>
+              <div className={cn('px-4 py-2')}>
                 <div className="mb-3 flex w-full flex-col">
                   <div className="flex items-center">
                     <div className="flex items-center gap-2">

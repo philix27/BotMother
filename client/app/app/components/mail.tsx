@@ -5,7 +5,7 @@ import { Input } from 'components/ui/input'
 import { ResizablePanel, ResizableHandle } from 'components/ui/resizable'
 import { Separator } from 'components/ui/separator'
 import { Search } from 'lucide-react'
-import { MailList } from './mail-list'
+import { MailList } from './sidebar'
 import { MailDisplay } from './mail-display'
 import { AppStores } from 'lib/zustand'
 
