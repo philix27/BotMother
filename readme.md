@@ -4,46 +4,35 @@
 
 ## Overview
 
-Neurobot is an AI-powered chat platform that takes ordinary emails to the next level. By leveraging the domain **basemail.me** as a universal proxy, our system automatically provisions inboxes for any basename. For example, if a user has the name **john.base.eth**, they automatically own the email address **john@basemail.me**. But these aren't your typical emails – they're supercharged AI emails, intelligently summarized and elegantly formatted to make information extraction effortless. On top of that, Basemail offers a voice-enabled inbox where a natural language voice agent lets you interact with every single email in any language.
-
-Built during a 48-hour hackathon, Basemail combines rapid development with modern, scalable AWS serverless architecture, pushing the envelope on what email can do.
+Employee.ai is a cutting-edge AI-powered platform that brings specialized virtual agents to your workforce. Designed to handle diverse roles, our AI agents are trained to perform complex tasks autonomously, streamlining operations, enhancing productivity, and reducing workload. Whether it's deploying a token onchain, funding wallets, generating tweets, posting, etc Employee.ai boosts productivity with intelligent, self-sufficient digital employees that work around the clock.
 
 ## Features
 
-- **Dynamic Mailbox Provisioning:**  
-  Automatically creates a personalized inbox for any basename using the basemail.me proxy domain.
+- **Onchain Agent:**  
+  Onchain agents can help you carryout onchain actions such as buying a token, creating an NFT and lauching a smart contract.
 
-- **AI-Powered Summarization & Formatting:**  
-  Incoming emails are processed through AI (using AWS Bedrock and Pinecone) to extract summaries and emphasize the critical parts – making content super digestible.
+- **Twitter manager:**  
+  Tweets can also be created and published
 
-- **Voice-Enabled Interaction:**  
-  A voice agent lets you query and interact with your emails using natural language – talk to your inbox in any language.
-
-- **Real-Time Communication:**  
-  WebSocket integrations provide live updates and interactive messaging capabilities for a seamless experience.
-
-- **Scalable Serverless Architecture:**  
-  Leveraging AWS services like Lambda, SES, S3, DynamoDB, and API Gateway, ensuring high performance and low maintenance.
 
 ## Architecture
 
-Basemail is composed of three main AWS CloudFormation stacks (built with AWS CDK in TypeScript):
+Employee.ai is composed of three main stacks
 
-1. **Mail Stack:**
+1. **Frontend Stack:**
 
-   - **SES & S3:** Emails arriving via AWS SES are stored in an S3 bucket.
-   - **Lambda Processing:** A Lambda function (via `NodejsFunction`) triggered by SES events processes incoming emails, writing them to the bucket and forwarding them for further AI enhancement.
-   - **IAM Policies:** Fine-grained access permissions ensure each component (SES, Lambda, S3) interacts securely.
+   - **Next.js:** User friendly interface to enable users chat with the ai.
+   - **Privy Auth:** Used for authentication of users into the app.
 
-2. **API Stack:**
+2. **Agent Stack:**
 
-   - **HTTP and WebSocket APIs:** Provides REST endpoints for email retrieval and supports real-time connections (using API Gateway and WebSocket integrations).
-   - **Lambda Functions:** Various Lambda functions manage API requests, process WebSocket events, and even handle errors (with SQS DLQs for fault tolerance).
-   - **DynamoDB:** Manages the connections for the WebSocket-based real-time chat interface.
+   - **CDP AgentKit:** Provides the agents and a set of actions that can be plugged in to give the llm more capabilities
 
-3. **Bedrock Stack:**
-   - **AI Knowledge Base:** Integrates AWS Bedrock with a Pinecone vector store to create a knowledge base that powers email summarization and natural language querying.
-   - **S3 DataSource:** Uses a dedicated S3 bucket to store and process the data that feeds into the AI system.
+3. **API Stack:**
+
+   - **Backend APIs:** Provides REST endpoints for frontend communication with the user's desired ai agent. Powered with Nest.js backend
+   - **Deployment** Manages the wallet keys
+
 
 ## How It Works
 

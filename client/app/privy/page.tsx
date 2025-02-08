@@ -62,21 +62,21 @@ export default function Home() {
           This demo showcases how you can integrate{' '}
           <a href="https://wagmi.sh/" className="font-medium underline">
             wagmi
-          </a>{' '}
-          alongside{' '}
+          </a>
+          alongside
           <a href="https://www.privy.io/" className="font-medium underline">
             Privy
-          </a>{' '}
+          </a>
           in your React app. Login below to try it out!
           <br />
-          For more information, check out{' '}
+          For more information, check out
           <a href="https://docs.privy.io/guide/guides/wagmi" className="font-medium underline">
             our integration guide
-          </a>{' '}
-          or the{' '}
+          </a>
+          or the
           <a href="https://github.com/privy-io/wagmi-demo" className="font-medium underline">
             source code
-          </a>{' '}
+          </a>
           for this app.
         </p>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
@@ -118,6 +118,7 @@ export default function Home() {
                 <p className="mt-2">You are logged in with privy.</p>
                 <Button onClick_={connectWallet} cta="Connect another wallet" />
                 <Button onClick_={linkWallet} cta="Link another wallet" />
+                <Button onClick_={logout} cta="Logout from Privy" />
                 <textarea
                   value={JSON.stringify(wallets, null, 2)}
                   className="mt-2 w-full rounded-md bg-slate-700 p-4 font-mono text-xs text-slate-50 sm:text-sm"
@@ -132,7 +133,6 @@ export default function Home() {
                   disabled
                 />
                 <br />
-                <Button onClick_={logout} cta="Logout from Privy" />
               </>
             )}
           </div>
