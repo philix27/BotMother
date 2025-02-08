@@ -1,6 +1,8 @@
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
+import { employeeData } from './employeeData'
 
+export type Employee = (typeof employeeData)[number]
 export type IEmployees =
   | 'Crypto'
   | 'Finance'
@@ -18,6 +20,8 @@ export interface ISlice {
   active?: IEmployees
   allChat?: { msg: string; isMe: boolean; employee: IEmployees }[]
   chatText?: Record<IEmployees, string>
+  employeeData?: Employee[]
+  employeesToDisplay?: Employee[]
 }
 
 export interface ISliceUpdate extends Required<ISlice> {
@@ -38,8 +42,10 @@ export const defaultValues: Required<ISlice> = {
     'Customer Support': '',
     JobScout: '',
     SalesManager: '',
-    DailyMotivation: ''
-  }
+    DailyMotivation: '',
+  },
+  employeeData: employeeData,
+  employeesToDisplay: employeeData,
 }
 export const useEmployee = create(
   persist<ISliceUpdate>(

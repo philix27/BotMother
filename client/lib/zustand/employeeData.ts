@@ -1,6 +1,6 @@
 import { IEmployees } from 'lib/zustand/employee'
 
-export const mails: {
+export const employeeData: {
   id: string
   name: string
   email: string

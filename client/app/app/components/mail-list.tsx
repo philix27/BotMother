@@ -1,19 +1,15 @@
 'use client'
 
 import { cn } from 'lib/utils'
-import type { Mail } from '../PanelInbox/comps'
 import { AppStores } from 'lib/zustand'
+import { Employee } from 'lib/zustand/employee'
 
-interface MailListProps {
-  items: Mail[]
-}
-
-export function MailList({ items }: MailListProps) {
+export function MailList(props: {items: Employee[]}) {
   const store = AppStores.useEmployee()
   return (
     <div className="no-scrollbar h-[calc(100vh-80px)] overflow-y-scroll">
       <div className="mb-[150px] flex flex-col gap-2 p-4 pt-0">
-        {items.map((item) => (
+        {props.items.map((item) => (
           <div
             key={item.id}
             className={cn(

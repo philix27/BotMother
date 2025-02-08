@@ -33,7 +33,7 @@ export function AppHeader() {
               href="/"
               className={`header-logo block  px-4 xl:mr-12 ${sticky ? 'py-5 lg:py-2' : 'py-6'} `}
             >
-              <h1 className="text-nowrap text-lg font-black text-primary">Bot Mother</h1>
+              <h1 className="text-nowrap text-lg font-black text-primary">Employee.ai</h1>
             </Link>
 
             <div className="flex items-center justify-end  pr-5">

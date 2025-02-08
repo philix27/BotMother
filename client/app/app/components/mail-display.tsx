@@ -2,14 +2,14 @@
 import { Button } from 'components/ui/button'
 import { Separator } from 'components/ui/separator'
 import { Avatar, AvatarImage } from 'components/ui/avatar'
-import { Mail } from '../PanelInbox/comps'
 import { MdSend } from 'react-icons/md'
 import { Input } from 'components/ui/input'
 import { cn } from 'lib/utils'
 import { AppStores } from 'lib/zustand'
 import axios from 'axios'
+import { Employee } from 'lib/zustand/employee'
 interface MailDisplayProps {
-  mail: Mail | null
+  mail: Employee | null
 }
 
 export function MailDisplay({ mail }: MailDisplayProps) {

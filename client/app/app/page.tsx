@@ -1,21 +1,27 @@
 'use client'
 import React from 'react'
-import { mails } from './PanelInbox/data'
-import { Mail } from './components/mail'
+import { TooltipProvider } from 'components/ui/tooltip'
+import { ResizablePanelGroup } from 'components/ui/resizable'
 import { AppStores } from 'lib/zustand'
-import { accounts } from './PanelInbox/comps'
+import MailInbox from './components/mail'
 
 export default function Page() {
   const store = AppStores.useSettings()
+
   return (
     <div className="h-screen flex-col  md:flex">
-      <Mail
-        accounts={accounts}
-        mails={mails}
-        defaultLayout={store.defaultLayout}
-        defaultCollapsed={store.defaultCollapsed}
-        navCollapsedSize={4}
-      />
+      <TooltipProvider delayDuration={0}>
+        <ResizablePanelGroup
+          direction="horizontal"
+          onLayout={(sizes: number[]) => {
+            store.update({ defaultLayout: sizes })
+            document.cookie = `react-resizable-panels:layout:mail=${JSON.stringify(sizes)}`
+          }}
+          className="h-full items-stretch"
+        >
+          <MailInbox />
+        </ResizablePanelGroup>
+      </TooltipProvider>
     </div>
   )
 }
