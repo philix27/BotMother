@@ -1,6 +1,6 @@
 import { atom, useAtom } from 'jotai'
-import type { Mail } from './data';
-import { mails } from './data'
+import { mails } from './PanelInbox/data'
+import { Mail } from './PanelInbox/comps'
 
 type Config = {
   selected: Mail['id'] | null

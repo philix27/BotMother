@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    --background: #e4e1e1;
+    --background: #e1e3e4;
     --foreground: #535353;
 
     --muted: #898989;
@@ -32,7 +32,7 @@
     --destructive-foreground: #ffffff;
 
     --ring: #4c4847;
-    --border: #4c4847;
+    --border: #929292;
     --input: #d0d0d0;
 
     --radius: 0.5rem;

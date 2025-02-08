@@ -15,7 +15,6 @@ import {
   ReplyAll,
   Trash2,
 } from 'lucide-react'
-import type { Mail } from '../data'
 import { Button } from 'components/ui/button'
 import {
   DropdownMenu,
@@ -30,6 +29,7 @@ import { Switch } from 'components/ui/switch'
 import { Popover, PopoverContent, PopoverTrigger } from 'components/ui/popover'
 import { Tooltip, TooltipContent, TooltipTrigger } from 'components/ui/tooltip'
 import { Textarea } from 'components/ui/textarea'
+import { Mail } from '../PanelInbox/comps'
 
 interface MailDisplayProps {
   mail: Mail | null
@@ -169,27 +169,12 @@ export function MailDisplay({ mail }: MailDisplayProps) {
           <div className="flex items-start p-4">
             <div className="flex items-start gap-4 text-sm">
               <Avatar>
-                <AvatarImage alt={mail.name} />
-                <AvatarFallback>
-                  {mail.name
-                    .split(' ')
-                    .map((chunk) => chunk[0])
-                    .join('')}
-                </AvatarFallback>
+                <AvatarImage alt={mail.name} src={mail.img} className='size-[150%]' />
               </Avatar>
-              <div className="grid gap-1">
+              <div className="gap-1">
                 <div className="font-semibold">{mail.name}</div>
-                <div className="line-clamp-1 text-xs">{mail.subject}</div>
-                <div className="line-clamp-1 text-xs">
-                  <span className="font-medium">Reply-To:</span> {mail.email}
-                </div>
               </div>
             </div>
-            {mail.date && (
-              <div className="ml-auto text-xs text-muted-foreground">
-                {dtFns.format(new Date(mail.date), 'PPpp')}
-              </div>
-            )}
           </div>
           <Separator />
           <div className="flex-1 whitespace-pre-wrap p-4 text-sm">{mail.text}</div>
