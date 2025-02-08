@@ -13,10 +13,9 @@ export default function PanelInbox() {
   const [mail] = useMail()
   return (
     <>
-      <ResizableHandle withHandle />
       <ResizablePanel defaultSize={30} minSize={30}>
         <Tabs defaultValue="all">
-          <div className="flex items-center px-4 py-2">
+          <div className="flex items-center px-4 py-2 h-[60px]">
             <h1 className="text-xl font-bold">Inbox</h1>
             <TabsList className="ml-auto">
               <TabsTrigger value="all" className="mx-2 text-zinc-600 dark:text-zinc-200">

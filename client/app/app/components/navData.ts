@@ -9,7 +9,7 @@ export const navData: {
   view: IViews
 }[] = [
   {
-    title: 'Inbox',
+    title: 'Employees',
     label: '128',
     icon: Inbox,
     variant: 'default',

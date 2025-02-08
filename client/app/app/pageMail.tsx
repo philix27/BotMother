@@ -12,7 +12,7 @@ export default function MailPage() {
   const store = AppStores.useSettings()
   return (
     <>
-      <div className="md:hidden">
+      <div className="md:hidden h-screen">
         <Image
           src="/examples/mail-dark.png"
           width={1280}

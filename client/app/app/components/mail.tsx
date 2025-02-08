@@ -1,16 +1,11 @@
 'use client'
 
 import * as React from 'react'
-import { cn } from 'lib/utils'
-import { Nav } from './nav'
 import { TooltipProvider } from 'components/ui/tooltip'
-import { ResizablePanelGroup, ResizablePanel } from 'components/ui/resizable'
-import { navData } from './navData'
+import { ResizablePanelGroup } from 'components/ui/resizable'
 import PanelInbox from '../PanelInbox'
 import { AppStores } from 'lib/zustand'
 import type { IViews } from 'lib/zustand/screens'
-import PanelBot from '../PanelBot'
-import { Separator } from 'components/ui/separator'
 
 interface MailProps {
   accounts: {
@@ -43,7 +38,7 @@ export function Mail({
         }}
         className="h-full max-h-[800px] items-stretch"
       >
-        <ResizablePanel
+        {/* <ResizablePanel
           defaultSize={defaultLayout[0]}
           collapsedSize={navCollapsedSize}
           collapsible={true}
@@ -64,20 +59,9 @@ export function Mail({
           <Separator />
           <Nav isCollapsed={isCollapsed} links={navData} />
           <Separator />
-        </ResizablePanel>
-        <ActiveView activeScreen={store.activeScreen} />
+        </ResizablePanel> */}
+        <PanelInbox />
       </ResizablePanelGroup>
     </TooltipProvider>
   )
-}
-
-function ActiveView(props: { activeScreen: IViews }) {
-  switch (props.activeScreen) {
-    case 'INBOX':
-      return <PanelInbox />
-    case 'BOTS':
-      return <PanelBot />
-    default:
-      return <PanelInbox />
-  }
 }

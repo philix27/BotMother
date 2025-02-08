@@ -7,10 +7,8 @@ import { AppHeader } from 'app/zhome/Header'
 export default function Page() {
   return (
     <>
-      <AppHeader />
-      <CoreWrapper>
-        <MailPage />
-      </CoreWrapper>
+      {/* <AppHeader /> */}
+      <MailPage />
     </>
   )
 }
