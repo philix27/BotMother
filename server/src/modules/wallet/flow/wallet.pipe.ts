@@ -1,14 +1,34 @@
 import * as Joi from "joi";
 
 import { JoiValidationPipe } from "../../common";
-import { EmployeeData, SendMessageInput } from "../model";
+import {
+    CreateWalletInput,
+    SendMessageInput,
+    TransferFundsInput,
+} from "../model";
 
 export class EmployeePipe extends JoiValidationPipe {
     public buildSchema(): Joi.Schema {
         return Joi.object<SendMessageInput>({
-            // @todo When building input validation, also include regex
-            // and other techniques for optimal security
-            msg: Joi.string().required().max(EmployeeData.NAME_LENGTH),
+            msg: Joi.string().required().max(50),
+        });
+    }
+}
+export class CreateWalletPipe extends JoiValidationPipe {
+    public buildSchema(): Joi.Schema {
+        return Joi.object<CreateWalletInput>({
+            userId: Joi.string().required().max(50),
+        });
+    }
+}
+
+export class TransferFundsPipe extends JoiValidationPipe {
+    public buildSchema(): Joi.Schema {
+        return Joi.object<TransferFundsInput>({
+            walletId: Joi.string().required(),
+            value: Joi.number().required(),
+            chainId: Joi.number().required(),
+            to: Joi.string().required(),
         });
     }
 }

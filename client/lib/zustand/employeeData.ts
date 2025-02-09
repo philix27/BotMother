@@ -45,7 +45,7 @@ export const employeeData: {
     text: 'Professional Email Generator',
     read: false,
     img: '/employees/penTeal.webp',
-    color: 'bg-teal-600',
+    color: 'bg-pink-600',
     key: 'EmailMarketing',
   },
   {

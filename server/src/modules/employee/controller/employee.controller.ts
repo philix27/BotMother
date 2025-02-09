@@ -28,7 +28,7 @@ export class EmployeeController {
         @Body(EmployeePipe) input: SendMessageInput
     ): Promise<[]> {
         const res = await this.employeeService.sendMessage(input);
-        this.logger.info(`New message sent`);
+        this.logger.info(`New response sent:` + res);
         return res;
     }
 

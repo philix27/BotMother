@@ -15,6 +15,7 @@ export class PrivyAuthService {
             process.env.PRIVY_APP_ID || "",
             process.env.PRIVY_APP_SECRET || ""
         );
+
         this.logger.info("Initialized");
     }
 
@@ -22,7 +23,8 @@ export class PrivyAuthService {
         const walletInfo = await this.client.walletApi.create({
             chainType,
         });
-        this.logger.info("Wallet created");
+
+        this.logger.info("Wallet created: " + JSON.stringify(walletInfo));
         return walletInfo;
     }
 
@@ -44,14 +46,14 @@ export class PrivyAuthService {
     }
 
     async transferFunds(params: {
-        id: string;
+        walletId: string;
         to: string;
         value: number;
         chainId: number;
     }) {
         const res = await this.client.walletApi.rpc({
             // Your wallet ID (not address), returned during creation
-            walletId: params.id,
+            walletId: params.walletId,
             method: "eth_sendTransaction",
             caip2: "eip155:11155111",
             params: {

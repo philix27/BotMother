@@ -3,7 +3,9 @@ import React from 'react'
 import { TooltipProvider } from 'components/ui/tooltip'
 import { ResizablePanelGroup } from 'components/ui/resizable'
 import { AppStores } from 'lib/zustand'
-import MailInbox from './components/mail'
+import MailInbox from './mail'
+import AllModals from './modals/all'
+
 
 export default function Page() {
   const store = AppStores.useSettings()
@@ -22,6 +24,7 @@ export default function Page() {
           <MailInbox />
         </ResizablePanelGroup>
       </TooltipProvider>
+      <AllModals />
     </div>
   )
 }

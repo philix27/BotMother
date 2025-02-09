@@ -5,15 +5,11 @@
  * @see https://docs.nestjs.com/fundamentals/custom-providers
  */
 export enum Service {
+    STORAGE = "storage.service",
 
-    STORAGE = 'storage.service',
-
-    CONFIG = 'config.service',
-
+    CONFIG = "config.service",
 }
 
 export enum Role {
-
-    RESTRICTED = 'restricted'
-
+    RESTRICTED = "restricted",
 }
