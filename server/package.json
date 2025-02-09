@@ -14,7 +14,12 @@
     "dev": "env-cmd -f .env nodemon",
     "build": "npm run clean && tsc",
     "test": "env-cmd -f .env jest --config=jest.json",
-    "lint": "eslint -c .eslintrc.js --ext .ts 'src/**/*.ts'"
+    "lint": "eslint -c .eslintrc.js --ext .ts 'src/**/*.ts'",
+    "#Prisma scripts": "Prisma scripts",
+    "gen": "npx prisma format && npx prisma generate",
+    "push": "npx prisma format && npx prisma db push",
+    "pull": "npx prisma db pull --force",
+    "studio": "npx prisma studio"
   },
   "dependencies": {
     "@coinbase/agentkit": "^0.1.1",

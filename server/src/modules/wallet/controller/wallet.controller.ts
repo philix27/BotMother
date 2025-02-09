@@ -6,8 +6,12 @@ import {
     ApiTags,
 } from "@nestjs/swagger";
 import { LoggerService } from "../../common";
-import { EmployeePipe } from "../flow";
-import { SendMessageInput } from "../model";
+import { CreateWalletPipe, EmployeePipe, TransferFundsPipe } from "../flow";
+import {
+    CreateWalletInput,
+    SendMessageInput,
+    TransferFundsInput,
+} from "../model";
 import { WalletService } from "../service";
 
 @Controller("wallets")
@@ -32,10 +36,10 @@ export class WalletController {
     @Post("create")
     @ApiOperation({ summary: "Create wallet" })
     @ApiResponse({ status: HttpStatus.CREATED })
-    public async sendMessage(
-        @Body(EmployeePipe) input: SendMessageInput
-    ): Promise<[]> {
-        const res = await this.walletService.create();
+    public async create(
+        @Body(CreateWalletPipe) input: CreateWalletInput
+    ): Promise<any> {
+        const res = await this.walletService.create(input);
         this.logger.info(`New wallet created`);
         return res;
     }
@@ -44,9 +48,9 @@ export class WalletController {
     @ApiOperation({ summary: "Transfer funds" })
     @ApiResponse({ status: HttpStatus.OK })
     public async transferFunds(
-        @Body(EmployeePipe) input: SendMessageInput
+        @Body(TransferFundsPipe) input: TransferFundsInput
     ): Promise<[]> {
-        const res = await this.walletService.transferFunds();
+        const res = await this.walletService.transferFunds(input);
         this.logger.info(`New wallet created`);
         return res;
     }

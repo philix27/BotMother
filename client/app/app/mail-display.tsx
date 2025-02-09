@@ -10,20 +10,14 @@ import axios from 'axios'
 import { Employee } from 'lib/zustand/employee'
 import { Tooltip, TooltipContent, TooltipTrigger } from 'components/ui/tooltip'
 import { SidebarOpen } from 'lucide-react'
-import { useState } from 'react'
-import { remark } from 'remark'
-import html from 'remark-html'
 
 interface MailDisplayProps {
   mail: Employee | null
 }
 
 export function MailDisplay({ mail }: MailDisplayProps) {
-  // const today = new Date()
   const store = AppStores.useEmployee()
   const storeSettings = AppStores.useSettings()
-  const [inputMsg, setMsg] = useState<string>('')
-  // http://localhost:3344/api/v1/employees/send-message
   const sendMsg = async () => {
     console.log('Reach mutate')
     const key = mail ? mail.key : 'Crypto'
