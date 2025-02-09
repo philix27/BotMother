@@ -8,6 +8,12 @@ import { cn } from 'lib/utils'
 import { AppStores } from 'lib/zustand'
 import axios from 'axios'
 import { Employee } from 'lib/zustand/employee'
+import { Tooltip, TooltipContent, TooltipTrigger } from 'components/ui/tooltip'
+import { SidebarOpen } from 'lucide-react'
+import { useState } from 'react'
+import { remark } from 'remark'
+import html from 'remark-html'
+
 interface MailDisplayProps {
   mail: Employee | null
 }
@@ -15,7 +21,8 @@ interface MailDisplayProps {
 export function MailDisplay({ mail }: MailDisplayProps) {
   // const today = new Date()
   const store = AppStores.useEmployee()
-
+  const storeSettings = AppStores.useSettings()
+  const [inputMsg, setMsg] = useState<string>('')
   // http://localhost:3344/api/v1/employees/send-message
   const sendMsg = async () => {
     console.log('Reach mutate')
@@ -27,7 +34,6 @@ export function MailDisplay({ mail }: MailDisplayProps) {
       })
       .then((res) => {
         store.update({
-          chatText: { ...store.chatText, [key]: '' },
           allChat: [
             ...store.allChat,
             {
@@ -49,8 +55,8 @@ export function MailDisplay({ mail }: MailDisplayProps) {
     <div className="relative flex h-full flex-col">
       {mail ? (
         <div className="flex flex-1 flex-col">
-          <div className="flex items-start p-4">
-            <div className="flex items-start gap-4 text-sm">
+          <div className="flex items-center justify-between p-4">
+            <div className="flex items-start  gap-4 text-sm">
               <Avatar>
                 <AvatarImage alt={mail.name} src={mail.img} className="size-[150%]" />
               </Avatar>
@@ -58,6 +64,21 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                 <div className="mb-2 font-semibold">{mail.name}</div>
                 <div className="text-xs">{mail.text}</div>
               </div>
+            </div>
+
+            <div>
+              <Tooltip>
+                <TooltipTrigger>
+                  <SidebarOpen
+                    onClick={() => {
+                      storeSettings.update({ showCryptoModal: true })
+                    }}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Wallet info</p>
+                </TooltipContent>
+              </Tooltip>
             </div>
           </div>
           <Separator />
@@ -73,7 +94,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                     className={cn(
                       'w-fit  max-w-[50%] rounded-lg',
                       !val.isMe ? mail.color : 'bg-card',
-                      !val.isMe && 'text-white',
+                      !val.isMe && 'bg-secondary text-white',
                     )}
                   >
                     <p className="p-3">{val.msg}</p>
@@ -88,6 +109,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
               <Input
                 className=""
                 placeholder={`Reply ${mail.name}...`}
+                value={store.chatText[mail.key]}
                 onChange={(e) => {
                   store.update({ chatText: { ...store.chatText, [mail.key]: e.target.value } })
                 }}
@@ -95,6 +117,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
               <Button
                 onClick={() => {
                   console.log('Button clicked')
+                  store.update({ chatText: { ...store.chatText, [mail.key]: '' } })
                   sendMsg()
                 }}
                 className={cn('rounded-full', mail.color)}
