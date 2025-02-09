@@ -84,7 +84,6 @@ export default function CryptoModal() {
 function Balance(params: { wAddr: string }) {
   const ba = useBalance({
     address: params.wAddr as `0x${string}`,
-    chainId: 84532
   })
 if(ba.isLoading)   return <p className='text-xs text-muted'>Bal: ...</p>
   return <p className='text-md text-muted'>Bal: {ba.data?.value.toString()}</p>

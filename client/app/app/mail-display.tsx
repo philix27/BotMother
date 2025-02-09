@@ -10,6 +10,7 @@ import axios from 'axios'
 import { Employee } from 'lib/zustand/employee'
 import { Tooltip, TooltipContent, TooltipTrigger } from 'components/ui/tooltip'
 import { SidebarOpen } from 'lucide-react'
+import ThemeToggler from 'app/zhome/ThemeToggler'
 
 interface MailDisplayProps {
   mail: Employee | null
@@ -60,7 +61,8 @@ export function MailDisplay({ mail }: MailDisplayProps) {
               </div>
             </div>
 
-            <div>
+            <div className='flex space-x-3'>
+               <ThemeToggler />
               <Tooltip>
                 <TooltipTrigger>
                   <SidebarOpen
@@ -114,7 +116,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                   store.update({ chatText: { ...store.chatText, [mail.key]: '' } })
                   sendMsg()
                 }}
-                className={cn('rounded-full bg-primary', mail.color)}
+                className={cn('rounded-full bg-primary')}
               >
                 <MdSend className="size-[24px]" />
               </Button>

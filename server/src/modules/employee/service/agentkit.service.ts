@@ -34,12 +34,12 @@ export class AgentKitService {
 
     constructor(agent: "TWITTER" | "WALLET") {
         console.info("Starting Agent...");
-        // if (agent === "WALLET") {
-        //     this.initializeWalletAgent();
-        // } else {
-        //     this.initializeWalletAgent();
-        //     // this.initializeTwitter();
-        // }
+        if (agent === "WALLET") {
+            this.initializeWalletAgent();
+        } else {
+            this.initializeWalletAgent();
+            // this.initializeTwitter();
+        }
     }
 
     private async _initialize(

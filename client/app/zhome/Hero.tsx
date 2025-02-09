@@ -32,6 +32,7 @@ export function Body() {
               >
                 Get started
               </Button>
+           
             )}
           </div>
         </div>

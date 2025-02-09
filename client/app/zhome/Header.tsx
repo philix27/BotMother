@@ -2,11 +2,17 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import ThemeToggler from './ThemeToggler'
+import { MdLogout } from 'react-icons/md'
+import { usePrivy } from '@privy-io/react-auth'
+import { useAccount, useDisconnect } from 'wagmi'
 
 const HEADER_HEIGHT = '60px'
 
 export function AppHeader() {
   const [sticky, setSticky] = useState(false)
+  const { logout,  } = usePrivy()
+  const { disconnect, } = useDisconnect()
+    const { isConnected } = useAccount()
   const handleStickyNavbar = () => {
     if (window.scrollY >= 80) {
       setSticky(true)
@@ -36,7 +42,12 @@ export function AppHeader() {
               <h1 className="text-nowrap text-lg font-black text-primary">Employee.ai</h1>
             </Link>
 
-            <div className="flex items-center justify-end  pr-5">
+            <div className="flex items-center justify-end  pr-5 space-x-2">
+              {!isConnected  &&  <MdLogout className="text-foreground hover:cursor-pointer" onClick={() => {
+                logout()
+                disconnect()
+              }} />}
+             
               <ThemeToggler />
             </div>
           </div>
