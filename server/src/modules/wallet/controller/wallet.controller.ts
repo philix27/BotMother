@@ -1,15 +1,13 @@
-import { Body, Controller, Get, HttpStatus, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, HttpStatus, Post } from "@nestjs/common";
 import {
     ApiBearerAuth,
     ApiOperation,
     ApiResponse,
     ApiTags,
 } from "@nestjs/swagger";
-
 import { LoggerService } from "../../common";
-
 import { EmployeePipe } from "../flow";
-import { EmployeeData, SendMessageInput } from "../model";
+import { SendMessageInput } from "../model";
 import { WalletService } from "../service";
 
 @Controller("wallets")
@@ -21,33 +19,46 @@ export class WalletController {
         private readonly walletService: WalletService
     ) {}
 
-    @Post("send-message")
-    @ApiOperation({ summary: "Send Message" })
-    @ApiResponse({ status: HttpStatus.OK, type: EmployeeData })
+    @Get("user-wallets")
+    @ApiOperation({ summary: "Get user wallets" })
+    @ApiResponse({ status: HttpStatus.OK, isArray: true })
+    public async getAllUserWallets(): Promise<[]> {
+        const res = await this.walletService.getAllUserWallets();
+        this.logger.info(`Get user wallets`);
+
+        return res;
+    }
+
+    @Post("create")
+    @ApiOperation({ summary: "Create wallet" })
+    @ApiResponse({ status: HttpStatus.CREATED })
     public async sendMessage(
         @Body(EmployeePipe) input: SendMessageInput
     ): Promise<[]> {
-        const res = await this.walletService.sendMessage(input);
-        this.logger.info(`New message sent`);
+        const res = await this.walletService.create();
+        this.logger.info(`New wallet created`);
         return res;
     }
 
-    @Get("get-employees-messages")
-    @ApiOperation({ summary: "Get Messages" })
-    @ApiResponse({ status: HttpStatus.OK, isArray: true, type: EmployeeData })
-    public async getMessages(@Param("id") userId: string): Promise<[]> {
-        const res = await this.walletService.getMessages({ userId });
-        this.logger.info(`Get messages`);
+    @Post("transfer")
+    @ApiOperation({ summary: "Transfer funds" })
+    @ApiResponse({ status: HttpStatus.OK })
+    public async transferFunds(
+        @Body(EmployeePipe) input: SendMessageInput
+    ): Promise<[]> {
+        const res = await this.walletService.transferFunds();
+        this.logger.info(`New wallet created`);
         return res;
     }
 
-    @Get("get-employees")
-    @ApiOperation({ summary: "Get employees" })
-    @ApiResponse({ status: HttpStatus.OK, isArray: true, type: EmployeeData })
-    public async getEmployees(): Promise<[]> {
-        const res = await this.walletService.getEmployees();
-        this.logger.info(`Find all employees agents`);
-
+    @Post("sign")
+    @ApiOperation({ summary: "Sign a message" })
+    @ApiResponse({ status: HttpStatus.OK })
+    public async signMsg(
+        @Body(EmployeePipe) input: SendMessageInput
+    ): Promise<[]> {
+        const res = await this.walletService.signMsg();
+        this.logger.info(`New wallet created`);
         return res;
     }
 }
