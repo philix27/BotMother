@@ -20,8 +20,9 @@ export function MailDisplay({ mail }: MailDisplayProps) {
   const sendMsg = async () => {
     console.log('Reach mutate')
     const key = mail ? mail.key : 'Crypto'
+
     axios
-      .post('http://localhost:3344/api/v1/employees/send-message', {
+      .post(process.env.NEXT_PUBLIC_BACKEND_URL + '/employees/send-message', {
         msg: store.chatText[key],
       })
       .then((res) => {
@@ -75,7 +76,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                       !val.isMe && 'text-white',
                     )}
                   >
-                    <p className='p-3' >{val.msg}</p>
+                    <p className="p-3">{val.msg}</p>
                   </div>
                 </div>
               ))}
