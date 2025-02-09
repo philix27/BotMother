@@ -3,7 +3,6 @@ import * as Joi from "joi";
 import { JoiValidationPipe } from "../../common";
 import {
     CreateWalletInput,
-    EmployeeData,
     SendMessageInput,
     TransferFundsInput,
 } from "../model";
@@ -11,14 +10,14 @@ import {
 export class EmployeePipe extends JoiValidationPipe {
     public buildSchema(): Joi.Schema {
         return Joi.object<SendMessageInput>({
-            msg: Joi.string().required().max(EmployeeData.NAME_LENGTH),
+            msg: Joi.string().required().max(50),
         });
     }
 }
 export class CreateWalletPipe extends JoiValidationPipe {
     public buildSchema(): Joi.Schema {
         return Joi.object<CreateWalletInput>({
-            userId: Joi.string().required().max(EmployeeData.NAME_LENGTH),
+            userId: Joi.string().required().max(50),
         });
     }
 }

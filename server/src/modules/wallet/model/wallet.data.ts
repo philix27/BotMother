@@ -1,25 +1,19 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { Passenger } from '@prisma/client';
+import { ApiProperty } from "@nestjs/swagger";
+import { Wallet } from "@prisma/client";
 
-export class EmployeeData {
+export class CreateWalletData {
+    @ApiProperty()
+    public readonly address: string;
 
-    public static readonly NAME_LENGTH = 50;
+    @ApiProperty()
+    public readonly walletId: string;
 
-    @ApiProperty({ description: 'Passenger unique ID', example: '36635263' })
-    public readonly id: number;
+    @ApiProperty()
+    public readonly chainType: string;
 
-    @ApiProperty({ description: 'First name', example: 'John' })
-    public readonly firstName: string;
-
-    @ApiProperty({ description: 'Last name', example: 'Doe' })
-    public readonly lastName: string;
-
-    public constructor(entity: Passenger) {
-        this.id = entity.id;
-        this.firstName = entity.firstName;
-        this.lastName = entity.lastName;
+    public constructor(entity: Wallet) {
+        this.walletId = entity.walletId;
+        this.chainType = entity.chainType;
+        this.address = entity.address;
     }
-
 }
-
-

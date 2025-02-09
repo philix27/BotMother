@@ -1,9 +1,9 @@
 import { ApiProperty, PickType } from "@nestjs/swagger";
-import { EmployeeData } from "./wallet.data";
+import { CreateWalletData } from "./wallet.data";
 
-export class EmployeeInput extends PickType(EmployeeData, [
-    "firstName",
-    "lastName",
+export class X_CreateWalletInput extends PickType(CreateWalletData, [
+    "address",
+    "walletId",
 ] as const) {}
 
 export class SendMessageInput {
