@@ -1,1 +1,1 @@
-export * from "./employee.pipe";
+export * from "./wallet.pipe";

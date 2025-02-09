@@ -7,8 +7,10 @@ import { PrivyAuthService } from "./privy.service";
 export class WalletService {
     public constructor(
         private readonly logger: LoggerService,
-        private readonly auth: PrivyAuthService
-    ) {}
+        private readonly provider: PrivyAuthService
+    ) {
+        this.provider = new PrivyAuthService(this.logger);
+    }
 
     public async sendMessage(data: SendMessageInput): Promise<[]> {
         return [];
