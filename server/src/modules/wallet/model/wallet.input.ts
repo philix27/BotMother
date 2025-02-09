@@ -22,6 +22,14 @@ export class CreateWalletInput {
         this.userId = entity.userId;
     }
 }
+export class GetWalletAddresses {
+    @ApiProperty({ description: "Chat message" })
+    public readonly userId: string;
+
+    public constructor(entity: { userId: string }) {
+        this.userId = entity.userId;
+    }
+}
 export class TransferFundsInput {
     @ApiProperty({ description: "id" })
     public readonly walletId: string;

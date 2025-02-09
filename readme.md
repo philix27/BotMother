@@ -11,6 +11,9 @@ Employee.ai is a cutting-edge AI-powered platform that brings specialized virtua
 - **Onchain Agent:**  
   Onchain agents can help you carryout onchain actions such as buying a token, creating an NFT and lauching a smart contract.
 
+- **Management of server wallets:**  
+  Create wallets for various specific use case with ease. Powered by Privy Server Wallets
+
 - **Twitter manager:**  
   Tweets can also be created and published
 
@@ -44,6 +47,9 @@ Employee.ai is composed of three main stacks
 
 3. **Backend & Routing:**  
   Receives request and determines which agent will handle the message. Appropriate response is the returned to the user.
+
+4. **Sever wallets:**  
+  Easily create as many wallets as you need to manage your budgets and other expenses. Privy Server Wallets makes this super easy
 
 ## Getting Started
 

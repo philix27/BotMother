@@ -99,7 +99,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
           <Separator className="mt-auto" />
 
           <div className="absolute bottom-0 my-[30px] flex w-full items-center justify-center">
-            <div className="flex w-[65%] max-w-[60%] items-center justify-between gap-4 rounded-lg bg-background  p-3">
+            <div className="flex w-[65%] max-w-[60%] items-center justify-between gap-4 rounded-lg bg-card  p-3">
               <Input
                 className=""
                 placeholder={`Reply ${mail.name}...`}
@@ -114,7 +114,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                   store.update({ chatText: { ...store.chatText, [mail.key]: '' } })
                   sendMsg()
                 }}
-                className={cn('rounded-full', mail.color)}
+                className={cn('rounded-full bg-primary', mail.color)}
               >
                 <MdSend className="size-[24px]" />
               </Button>

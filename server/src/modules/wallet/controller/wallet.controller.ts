@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Post } from "@nestjs/common";
+import { Body, Controller, Get, HttpStatus, Post, Query } from "@nestjs/common";
 import {
     ApiBearerAuth,
     ApiOperation,
@@ -9,6 +9,7 @@ import { LoggerService } from "../../common";
 import { CreateWalletPipe, EmployeePipe, TransferFundsPipe } from "../flow";
 import {
     CreateWalletInput,
+    GetAllWalletData,
     SendMessageInput,
     TransferFundsInput,
 } from "../model";
@@ -23,11 +24,15 @@ export class WalletController {
         private readonly walletService: WalletService
     ) {}
 
-    @Get("user-wallets")
+    @Get()
     @ApiOperation({ summary: "Get user wallets" })
     @ApiResponse({ status: HttpStatus.OK, isArray: true })
-    public async getAllUserWallets(): Promise<[]> {
-        const res = await this.walletService.getAllUserWallets();
+    public async getAllUserWallets(
+        @Query("id") id: string
+    ): Promise<GetAllWalletData[]> {
+        const res = await this.walletService.getAllUserWallets({
+            userId: id,
+        });
         this.logger.info(`Get user wallets`);
 
         return res;

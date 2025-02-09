@@ -17,3 +17,20 @@ export class CreateWalletData {
         this.address = entity.address;
     }
 }
+export class GetAllWalletData {
+    @ApiProperty()
+    public readonly address: string;
+
+    @ApiProperty()
+    public readonly walletId: string;
+
+    @ApiProperty()
+    public readonly chainType: string;
+
+    public constructor(entity: Wallet) {
+        this.walletId = entity.walletId;
+        this.chainType = entity.chainType;
+        this.address = entity.address;
+    }
+}
+
