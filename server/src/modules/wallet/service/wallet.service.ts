@@ -18,7 +18,29 @@ export class WalletService {
     public async getMessages(data: { userId: string }): Promise<[]> {
         return [];
     }
-    public async getEmployees(): Promise<[]> {
-        return [];
+
+    public async create(): Promise<any> {
+        const res = this.provider.createWallet();
+        return "create";
+    }
+    public async getAllUserWallets(): Promise<any> {
+        return "getAllUserWallets";
+    }
+    public async transferFunds(): Promise<any> {
+        const res = this.provider.transferFunds({
+            id: "",
+            to: "",
+            value: 0,
+            chainId: 0,
+        });
+        return "transferFunds";
+    }
+    public async signMsg(): Promise<any> {
+        const res = this.provider.signMsg({
+            id: "",
+            msg: "",
+            method: "",
+        });
+        return "signMsg";
     }
 }

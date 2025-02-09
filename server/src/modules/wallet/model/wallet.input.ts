@@ -1,5 +1,5 @@
 import { ApiProperty, PickType } from "@nestjs/swagger";
-import { EmployeeData } from "./employee.data";
+import { EmployeeData } from "./wallet.data";
 
 export class EmployeeInput extends PickType(EmployeeData, [
     "firstName",

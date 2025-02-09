@@ -12,45 +12,63 @@ export class PrivyAuthService {
 
     private async init() {
         this.client = new PrivyClient(
-            "insert_your_privy_app_id",
-            "insert_your_privy_app_secret"
+            process.env.PRIVY_APP_ID || "",
+            process.env.PRIVY_APP_SECRET || ""
         );
+        this.logger.info("Initialized");
     }
 
-    async createWallet() {
+    async createWallet(chainType = "ethereum") {
         const walletInfo = await this.client.walletApi.create({
-            chainType: "ethereum",
+            chainType,
         });
+        this.logger.info("Wallet created");
         return walletInfo;
     }
 
-    async signMsg(id: string) {
+    async signMsg(params: {
+        id: string;
+        msg: string;
+        method: "personal_sign" | string;
+    }) {
         const res = await this.client.walletApi.rpc({
-            walletId: id,
-            method: "personal_sign",
+            walletId: params.id,
+            method: params.method,
             params: {
-                message: "Hello server wallets!",
+                message: params.msg,
             },
         });
+
+        this.logger.info("Signed Msg:" + params.id);
         return res.data;
     }
 
-    async sendFunds(id: string) {
+    async transferFunds(params: {
+        id: string;
+        to: string;
+        value: number;
+        chainId: number;
+    }) {
         const res = await this.client.walletApi.rpc({
             // Your wallet ID (not address), returned during creation
-            walletId: id,
+            walletId: params.id,
             method: "eth_sendTransaction",
             caip2: "eip155:11155111",
             params: {
                 transaction: {
-                    // Be sure to replace this with your recipient address
-                    to: "0xyourRecipientAddress",
-                    value: 100000,
-                    chainId: 11155111,
+                    to: params.to,
+                    value: params.value,
+                    chainId: params.chainId,
                 },
             },
         });
-
+        this.logger.info(
+            "TransferFunds To: ".concat(
+                params.to,
+                " Amount: ",
+                params.value.toString()
+            )
+        );
         return res.data;
     }
 }

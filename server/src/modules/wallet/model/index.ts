@@ -1,2 +1,2 @@
-export * from "./employee.input";
-export * from "./employee.data";
+export * from "./wallet.input";
+export * from "./wallet.data";
