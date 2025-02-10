@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { LoggerService, PrismaService } from "../../common";
-import { PrivyAuthService } from "./privy.service";
+// import { PrivyAuthService } from "./privy.service";
 import {
     CreateWalletData,
     CreateWalletInput,
@@ -13,10 +13,10 @@ import {
 export class WalletService {
     public constructor(
         private readonly logger: LoggerService,
-        private readonly provider: PrivyAuthService,
+        // private readonly provider: PrivyAuthService,
         private readonly prismaService: PrismaService
     ) {
-        this.provider = new PrivyAuthService(this.logger);
+        // this.provider = new PrivyAuthService(this.logger);
     }
 
     public async create(props: CreateWalletInput): Promise<CreateWalletData> {
@@ -49,21 +49,26 @@ export class WalletService {
         lastName: string | null;
         wallet: string;
     }): Promise<CreateWalletData> {
-        const res = await this.provider.createWallet();
+        // const res = await this.provider.createWallet("ethereum");
 
-        await this.prismaService.wallet.create({
-            data: {
-                user_id: user.id,
-                walletId: res.id,
-                address: res.address,
-                chainType: res.chainType,
-            },
-        });
+        // await this.prismaService.wallet.create({
+        //     data: {
+        //         user_id: user.id,
+        //         walletId: res.id,
+        //         address: res.address,
+        //         chainType: res.chainType,
+        //     },
+        // });
         this.logger.info("Wallet service - create user");
         return {
-            ...res,
-            walletId: res.id,
+            chainType: "",
+           address: "",
+            walletId: "",
         };
+        // return {
+        //     ...res,
+        //     walletId: res.id,
+        // };
     }
 
     public async getAllUserWallets(
@@ -89,15 +94,15 @@ export class WalletService {
     }
 
     public async transferFunds(props: TransferFundsInput): Promise<any> {
-        this.provider.transferFunds(props);
+        // this.provider.transferFunds(props);
         return "transferFunds";
     }
     public async signMsg(): Promise<any> {
-        this.provider.signMsg({
-            id: "",
-            msg: "",
-            method: "",
-        });
+        // this.provider.signMsg({
+        //     id: "",
+        //     msg: "",
+        //     method: "",
+        // });
         return "signMsg";
     }
 }

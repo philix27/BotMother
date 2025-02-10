@@ -17,7 +17,6 @@
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
-    "@coinbase/onchainkit": "^0.36.9",
     "@privy-io/react-auth": "^2.2.1",
     "@privy-io/wagmi": "0.2.12",
     "@radix-ui/react-accordion": "^1.2.2",

@@ -1,0 +1,32 @@
+{
+    "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+    "manifest_version": 3,
+    "version": "0.0.1",
+    "name": "Employee.ai",
+   "description": "On and off-ramping of cryptocurrencies",
+	"categories": ["finance"],
+	"background_color": "#151718",
+	"theme_color": "#151718",
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": {             
+      "16": "vite.svg",  
+      "24": "vite.svg",  
+      "32": "vite.svg"   
+    },
+    "default_title": "Employee.ai"  
+    },
+    
+"side_panel": {
+    "default_path": "index.html"
+  },
+     "permissions": [ "sidePanel"],
+    "host_permissions":[ "http://*/*", "https://*/*"],
+   
+     "web_accessible_resources": [
+    {
+      "resources": ["index.html"],
+      "matches": ["https://*/*"]
+    }
+  ]
+}

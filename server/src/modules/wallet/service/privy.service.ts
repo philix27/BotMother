@@ -1,25 +1,26 @@
 import { Injectable } from "@nestjs/common";
-import { PrivyClient } from "@privy-io/server-auth";
+// import { PrivyClient } from "@privy-io/server-auth";
 import { LoggerService } from "../../common";
 
 @Injectable()
 export class PrivyAuthService {
-    client: PrivyClient;
+    client: any;
+    // clientv: PrivyClient;
 
     public constructor(private readonly logger: LoggerService) {
         this.init();
     }
 
     private async init() {
-        this.client = new PrivyClient(
-            process.env.PRIVY_APP_ID || "",
-            process.env.PRIVY_APP_SECRET || ""
-        );
+        // this.client = new PrivyClient(
+        //     process.env.PRIVY_APP_ID || "",
+        //     process.env.PRIVY_APP_SECRET || ""
+        // );
 
         this.logger.info("Initialized");
     }
 
-    async createWallet(chainType = "ethereum") {
+    async createWallet(chainType: "ethereum" | "solana") {
         const walletInfo = await this.client.walletApi.create({
             chainType,
         });
@@ -35,13 +36,16 @@ export class PrivyAuthService {
     }) {
         const res = await this.client.walletApi.rpc({
             walletId: params.id,
+            //@ts-ignore
             method: params.method,
             params: {
+                //@ts-ignore
                 message: params.msg,
             },
         });
-
+        
         this.logger.info("Signed Msg:" + params.id);
+        //@ts-ignore
         return res.data;
     }
 
@@ -58,6 +62,7 @@ export class PrivyAuthService {
             caip2: "eip155:11155111",
             params: {
                 transaction: {
+                     //@ts-ignore
                     to: params.to,
                     value: params.value,
                     chainId: params.chainId,
@@ -71,6 +76,7 @@ export class PrivyAuthService {
                 params.value.toString()
             )
         );
+         //@ts-ignore
         return res.data;
     }
 }
