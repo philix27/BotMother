@@ -15,7 +15,7 @@ RUN pnpm i
 COPY --chown=node:node . .
 RUN npx prisma generate \
     && pnpm run build \
-    && npm prune --omit=production
+    && npm prune --omit=dev
     
 # && npm prune --omit=dev
 # ---
