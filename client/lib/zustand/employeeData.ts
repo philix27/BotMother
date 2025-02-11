@@ -6,7 +6,7 @@ export const employeeData: {
   read: boolean
   img: string
   color: string
-  key: IEmployees
+  emKey: IEmployees
 }[] = [
   {
     name: 'Crypto Buddy',
@@ -14,7 +14,7 @@ export const employeeData: {
     read: true,
     img: '/employees/buddy.webp',
     color: 'bg-blue-500',
-    key: 'Crypto',
+    emKey: 'Crypto',
   },
   {
     name: 'Finance',
@@ -22,7 +22,7 @@ export const employeeData: {
     read: true,
     img: '/employees/cassie.webp',
     color: 'bg-blue-700',
-    key: 'Finance',
+    emKey: 'Finance',
   },
   {
     name: 'Tweet Generator',
@@ -30,7 +30,7 @@ export const employeeData: {
     read: true,
     img: '/employees/gigiGreen.webp',
     color: 'bg-green-600',
-    key: 'TweetGenerator',
+    emKey: 'TweetGenerator',
   },
   {
     name: 'Daily Motivation',
@@ -38,7 +38,7 @@ export const employeeData: {
     read: false,
     img: '/employees/milliPink.webp',
     color: 'bg-pink-600',
-    key: 'DailyMotivation',
+    emKey: 'DailyMotivation',
   },
   {
     name: 'Email Generator',
@@ -46,7 +46,7 @@ export const employeeData: {
     read: false,
     img: '/employees/penTeal.webp',
     color: 'bg-pink-600',
-    key: 'EmailMarketing',
+    emKey: 'EmailMarketing',
   },
   {
     name: 'Instagram',
@@ -54,6 +54,6 @@ export const employeeData: {
     read: true,
     img: '/employees/soshiePurple.webp',
     color: 'bg-purple-500',
-    key: 'Instagram',
+    emKey: 'Instagram',
   },
 ]

@@ -38,7 +38,7 @@ export default function CryptoModal() {
             <TabsTrigger
               value={'WALLETS'}
               className={cn(
-                'h-full w-full py-4  hover:bg-primary hover:text-white',
+                'h-full w-full py-3  hover:bg-primary hover:text-white',
                 store.cryptoTabs === 'WALLETS' ? 'bg-primary text-white' : 'bg-background',
               )}
               onClick={() => {
@@ -51,7 +51,7 @@ export default function CryptoModal() {
             <TabsTrigger
               value="STATS"
               className={cn(
-                'h-full w-full py-4  hover:bg-primary hover:text-white',
+                'h-full w-full py-3  hover:bg-primary hover:text-white',
                 store.cryptoTabs === 'STATS' ? 'bg-primary text-white' : 'bg-background',
               )}
               onClick={() => {
@@ -64,6 +64,7 @@ export default function CryptoModal() {
         </div>
 
         <TabsContent value="WALLETS" className="p-2">
+          <InBalance wAddr={address} />
           <div>
             {!data ? (
               <Spinner />
@@ -72,7 +73,7 @@ export default function CryptoModal() {
                 <div key={i} className="mb-4 w-full rounded-lg bg-background px-3 py-2">
                   <p className="mb-4 text-wrap text-primary">{val.address}</p>
                   <div className="gap-y-4">
-                    <Balance wAddr={val.address} />
+                    <InBalance wAddr={val.address} />
                     <p className="text-xs text-muted">Wallet ID: {val.walletId}</p>
                     <p className="text-xs text-muted">Chain Type: {val.chainType.toUpperCase()}</p>
                   </div>
@@ -99,7 +100,7 @@ export default function CryptoModal() {
   )
 }
 
-function Balance(params: { wAddr: string }) {
+function InBalance(params: { wAddr?: string }) {
   const ba = useBalance({
     address: params.wAddr as `0x${string}`,
   })

@@ -1,7 +1,6 @@
 'use client'
 
 import { Avatar, AvatarImage } from 'components/ui/avatar'
-import { IEmployees } from 'lib/zustand/employee'
 import { Tooltip, TooltipContent, TooltipTrigger } from 'components/ui/tooltip'
 import { SidebarOpen } from 'lucide-react'
 import ThemeToggler from 'app/zhome/ThemeToggler'
@@ -10,10 +9,7 @@ import { ISliceUpdate } from 'lib/zustand/settings'
 export function ChatHeader(props: {
   name: string
   text: string
-  read: boolean
   img: string
-  color: string
-  key: IEmployees
   storeSettings: ISliceUpdate
 }) {
   return (

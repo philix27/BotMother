@@ -14,12 +14,13 @@ interface MailDisplayProps {
   mail: Employee | null
 }
 
-export function MailDisplay({ mail }: MailDisplayProps) {
+export default function Chat({ mail }: MailDisplayProps) {
   const store = AppStores.useEmployee()
   const storeSettings = AppStores.useSettings()
+  const key = mail ? mail.emKey : 'Crypto'
+
   const sendMsg = async () => {
     console.log('Reach mutate')
-    const key = mail ? mail.key : 'Crypto'
 
     axios
       .post(process.env.NEXT_PUBLIC_BACKEND_URL + '/employees/send-message', {
@@ -48,9 +49,14 @@ export function MailDisplay({ mail }: MailDisplayProps) {
     <div className="relative flex h-full flex-col">
       {mail ? (
         <div className="flex flex-1 flex-col">
-          <ChatHeader storeSettings={storeSettings} {...mail} />
+          <ChatHeader
+            storeSettings={storeSettings}
+            name={mail.name}
+            text={mail.text}
+            img={mail.img}
+          />
           <Separator />
-          <ChatMessage store={store} {...mail} />
+          <ChatMessage activeKey={store.active} store={store} name={mail.emKey} text={mail.text} />
           <Separator className="mt-auto" />
 
           <div className="absolute bottom-0 my-[30px] flex w-full items-center justify-center">
@@ -58,15 +64,15 @@ export function MailDisplay({ mail }: MailDisplayProps) {
               <Input
                 className=""
                 placeholder={`Reply ${mail.name}...`}
-                value={store.chatText[mail.key]}
+                value={store.chatText[mail.emKey]}
                 onChange={(e) => {
-                  store.update({ chatText: { ...store.chatText, [mail.key]: e.target.value } })
+                  store.update({ chatText: { ...store.chatText, [mail.emKey]: e.target.value } })
                 }}
               />
               <Button
                 onClick={() => {
                   console.log('Button clicked')
-                  store.update({ chatText: { ...store.chatText, [mail.key]: '' } })
+                  store.update({ chatText: { ...store.chatText, [mail.emKey]: '' } })
                   sendMsg()
                 }}
                 variant={'default'}

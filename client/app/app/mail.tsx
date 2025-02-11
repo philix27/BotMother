@@ -5,8 +5,8 @@ import { Input } from 'components/ui/input'
 import { ResizablePanel, ResizableHandle } from 'components/ui/resizable'
 import { Separator } from 'components/ui/separator'
 import { Search } from 'lucide-react'
-import { MailList } from './sidebar'
-import { MailDisplay } from './ChatDisplay'
+import { Sidebar } from './sidebar'
+import Chat from './Chat'
 import { AppStores } from 'lib/zustand'
 
 export default function PanelInbox() {
@@ -58,17 +58,17 @@ export default function PanelInbox() {
             </form>
           </div>
           <TabsContent value="all" className="m-0">
-            <MailList items={store.employeesToDisplay} />
+            <Sidebar items={store.employeesToDisplay} />
           </TabsContent>
           <TabsContent value="unread" className="m-0">
-            <MailList items={store.employeesToDisplay.filter((item) => !item.read)} />
+            <Sidebar items={store.employeesToDisplay.filter((item) => !item.read)} />
           </TabsContent>
         </Tabs>
       </ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel defaultSize={70} minSize={40}>
-        <MailDisplay
-          mail={store.employeesToDisplay.filter((item) => item.key === store.active)[0] || null}
+        <Chat
+          mail={store.employeesToDisplay.filter((item) => item.emKey === store.active)[0] || null}
         />
       </ResizablePanel>
     </>

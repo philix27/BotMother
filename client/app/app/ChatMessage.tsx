@@ -7,15 +7,12 @@ export function ChatMessage(props: {
   store: ISliceUpdate
   name: string
   text: string
-  read: boolean
-  img: string
-  color: string
-  key: IEmployees
+  activeKey: IEmployees
 }) {
   return (
     <div className="no-scrollbar h-[90vh] w-full gap-y-2 overflow-y-scroll px-8 pb-[100px] pt-4">
       {props.store.allChat
-        .filter((val) => val.employee === props.key)
+        .filter((val) => val.employee === props.activeKey)
         .map((val, i) => (
           <div
             key={i}
@@ -24,7 +21,6 @@ export function ChatMessage(props: {
             <div
               className={cn(
                 'w-fit  max-w-[50%] rounded-lg',
-                !val.isMe ? props.color : 'bg-card',
                 !val.isMe && 'bg-secondary text-white',
               )}
             >
