@@ -16,7 +16,7 @@ export default function Page() {
 
   useEffect(() => {
     if (!authenticated) {
-      router.push('/')
+      // router.push('/')
     }
   })
   return (
