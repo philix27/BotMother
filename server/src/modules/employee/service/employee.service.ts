@@ -18,6 +18,7 @@ export class EmployeeService {
         this.logger.info("Employee Service: Send Message to agent");
         try {
             const res = await this._selectAndSendMessage(data);
+            if (res === undefined) throw "Sorry, I could not process message";
             return res;
         } catch (error) {
             return "Sorry, I could not process message";
@@ -33,7 +34,7 @@ export class EmployeeService {
 
     private async _selectAndSendMessage(
         data: SendMessageInput
-    ): Promise<string> {
+    ): Promise<string | undefined> {
         switch (data.agent) {
             case "WALLET": {
                 const res = await this.walletAgent.chat(data.msg);

@@ -138,14 +138,23 @@ export class AgentKitService {
                 { messages: [new HumanMessage(userInput)] },
                 this.config
             );
-
+            let collectedMsg = "";
             for await (const chunk of stream) {
                 if ("agent" in chunk) {
-                    return chunk.agent.messages[0].content;
+                    console.log(
+                        "agent response:",
+                        chunk.agent.messages[0].content
+                    );
+                    collectedMsg = chunk.agent.messages[0].content;
                 } else if ("tools" in chunk) {
-                    return chunk.tools.messages[0].content;
+                    console.log(
+                        "tools response:",
+                        chunk.agent.messages[0].content
+                    );
+                    collectedMsg = chunk.tools.messages[0].content;
                 }
             }
+            return collectedMsg;
         } catch (error) {
             console.error(error.message);
         }
