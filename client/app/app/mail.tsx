@@ -6,7 +6,7 @@ import { ResizablePanel, ResizableHandle } from 'components/ui/resizable'
 import { Separator } from 'components/ui/separator'
 import { Search } from 'lucide-react'
 import { MailList } from './sidebar'
-import { MailDisplay } from './mail-display'
+import { MailDisplay } from './ChatDisplay'
 import { AppStores } from 'lib/zustand'
 
 export default function PanelInbox() {
