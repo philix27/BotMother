@@ -6,7 +6,7 @@ export const employeeData: {
   read: boolean
   img: string
   color: string
-  key: IEmployees
+  emKey: IEmployees
 }[] = [
   {
     name: 'Crypto Buddy',
@@ -14,15 +14,23 @@ export const employeeData: {
     read: true,
     img: '/employees/buddy.webp',
     color: 'bg-blue-500',
-    key: 'Crypto',
+    emKey: 'Crypto',
   },
   {
     name: 'Finance',
-    text: 'Manage your finance',
+    text: 'Lock your savings and earn from interest on them.',
     read: true,
     img: '/employees/cassie.webp',
     color: 'bg-blue-700',
-    key: 'Finance',
+    emKey: 'Finance',
+  },
+  {
+    name: 'Coin Watcher',
+    text: 'Help you manage your instagram account',
+    read: true,
+    img: '/employees/dexter.avif',
+    color: 'bg-purple-500',
+    emKey: 'CoinWatcher',
   },
   {
     name: 'Tweet Generator',
@@ -30,15 +38,15 @@ export const employeeData: {
     read: true,
     img: '/employees/gigiGreen.webp',
     color: 'bg-green-600',
-    key: 'TweetGenerator',
+    emKey: 'TweetGenerator',
   },
   {
     name: 'Daily Motivation',
     text: 'Get your daily inspiration to get going',
     read: false,
-    img: '/employees/milliPink.webp',
+    img: '/employees/emmieYellow.webp',
     color: 'bg-pink-600',
-    key: 'DailyMotivation',
+    emKey: 'DailyMotivation',
   },
   {
     name: 'Email Generator',
@@ -46,7 +54,7 @@ export const employeeData: {
     read: false,
     img: '/employees/penTeal.webp',
     color: 'bg-pink-600',
-    key: 'EmailMarketing',
+    emKey: 'EmailMarketing',
   },
   {
     name: 'Instagram',
@@ -54,6 +62,30 @@ export const employeeData: {
     read: true,
     img: '/employees/soshiePurple.webp',
     color: 'bg-purple-500',
-    key: 'Instagram',
+    emKey: 'Instagram',
+  },
+  {
+    name: 'Image Generator',
+    text: 'Generate images and deploy them as NFTS or post on your social media',
+    read: true,
+    img: '/employees/commet.webp',
+    color: 'bg-purple-500',
+    emKey: 'ImageGenerator',
+  },
+  {
+    name: 'Lemonade Event Planner',
+    text: 'Create and manage events on Lemonade',
+    read: false,
+    img: '/employees/uizzy.webp',
+    color: 'bg-purple-500',
+    emKey: 'LemonadeEventPlanner',
+  },
+  {
+    name: 'Web3 Job Scout',
+    text: 'Get notified early on your web3 related jobs',
+    read: true,
+    img: '/employees/milliPink.webp',
+    color: 'bg-purple-500',
+    emKey: 'JobScout',
   },
 ]

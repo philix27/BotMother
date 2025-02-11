@@ -8,7 +8,7 @@ export interface ISlice {
   showCryptoModal?: boolean
   showTweetsModal?: boolean
   showMotivationModal?: boolean
-  cryptoTabs?: 'WALLETS' | 'CHARTS'
+  cryptoTabs?: 'WALLETS' | 'STATS'
 }
 
 export const defaultValues: Required<ISlice> = {

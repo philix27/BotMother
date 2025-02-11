@@ -5,7 +5,7 @@ import { LoggerService } from "../../common";
 @Injectable()
 export class PrivyAuthService {
     client: any;
-    // clientv: PrivyClient;
+    // client: PrivyClient;
 
     public constructor(private readonly logger: LoggerService) {
         this.init();
@@ -43,7 +43,7 @@ export class PrivyAuthService {
                 message: params.msg,
             },
         });
-        
+
         this.logger.info("Signed Msg:" + params.id);
         //@ts-ignore
         return res.data;
@@ -62,7 +62,7 @@ export class PrivyAuthService {
             caip2: "eip155:11155111",
             params: {
                 transaction: {
-                     //@ts-ignore
+                    //@ts-ignore
                     to: params.to,
                     value: params.value,
                     chainId: params.chainId,
@@ -76,7 +76,7 @@ export class PrivyAuthService {
                 params.value.toString()
             )
         );
-         //@ts-ignore
+        //@ts-ignore
         return res.data;
     }
 }

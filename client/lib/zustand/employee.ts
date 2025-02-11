@@ -5,8 +5,11 @@ import { employeeData } from './employeeData'
 export type Employee = (typeof employeeData)[number]
 export type IEmployees =
   | 'Crypto'
+  | 'CoinWatcher'
   | 'Finance'
   | 'TweetGenerator'
+  | 'ImageGenerator'
+  | 'LemonadeEventPlanner'
   | 'LinkedIn'
   | 'Instagram'
   | 'EmailMarketing'
@@ -43,6 +46,9 @@ export const defaultValues: Required<ISlice> = {
     JobScout: '',
     SalesManager: '',
     DailyMotivation: '',
+    CoinWatcher: '',
+    ImageGenerator: '',
+    LemonadeEventPlanner: ''
   },
   employeeData: employeeData,
   employeesToDisplay: employeeData,
