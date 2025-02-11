@@ -13,8 +13,8 @@ export function ChatHeader(props: {
   storeSettings: ISliceUpdate
 }) {
   return (
-    <div className="flex items-center justify-between p-4">
-      <div className="flex items-start  gap-4 text-sm">
+    <div className="flex items-center justify-between px-2 pr-5 py-2">
+      <div className="flex items-start gap-4 text-sm">
         <Avatar>
           <AvatarImage alt={props.name} src={props.img} className="size-[150%]" />
         </Avatar>

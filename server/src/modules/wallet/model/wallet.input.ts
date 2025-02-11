@@ -18,6 +18,9 @@ export class CreateWalletInput {
     @ApiProperty({ description: "Chat message" })
     public readonly userId: string;
 
+    @ApiProperty()
+    public readonly name: string;
+
     public constructor(entity: { userId: string }) {
         this.userId = entity.userId;
     }

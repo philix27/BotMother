@@ -23,6 +23,7 @@ export class SafeService {
     }
 
     async uniswap() {
+        this.safeClient.connect({})
         // TODO:
     }
     async cowswap() {

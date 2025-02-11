@@ -21,10 +21,10 @@ export function Sidebar(props: { items: Employee[] }) {
             }}
           >
             <div className="flex w-full">
-              <div className="relative h-[130px] w-[120px] min-w-[100px] overflow-y-hidden">
+              <div className="relative h-[80px] w-[120px] min-w-[100px] overflow-y-hidden">
                 <img
                   src={item.img}
-                  className=" absolute top-[-20px] h-[150%] w-full object-cover"
+                  className=" absolute top-[-5px] h-[170%] w-full object-cover"
                 />
               </div>
 
@@ -39,8 +39,8 @@ export function Sidebar(props: { items: Employee[] }) {
                   </div>
                 </div>
 
-                <div className="text-md line-clamp-2 text-muted-foreground">
-                  {item.text.substring(0, 300)}
+                <div className="text-md line-clamp-2 text-xs text-muted-foreground">
+                  {item.text.substring(0, 50)}
                 </div>
               </div>
             </div>

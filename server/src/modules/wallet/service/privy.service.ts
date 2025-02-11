@@ -1,21 +1,21 @@
 import { Injectable } from "@nestjs/common";
-// import { PrivyClient } from "@privy-io/server-auth";
+import { PrivyClient } from "@privy-io/server-auth";
 import { LoggerService } from "../../common";
 
 @Injectable()
 export class PrivyAuthService {
-    client: any;
-    // clientv: PrivyClient;
+    // client: any;
+    client: PrivyClient;
 
     public constructor(private readonly logger: LoggerService) {
         this.init();
     }
 
     private async init() {
-        // this.client = new PrivyClient(
-        //     process.env.PRIVY_APP_ID || "",
-        //     process.env.PRIVY_APP_SECRET || ""
-        // );
+        this.client = new PrivyClient(
+            process.env.PRIVY_APP_ID || "",
+            process.env.PRIVY_APP_SECRET || ""
+        );
 
         this.logger.info("Initialized");
     }
@@ -43,7 +43,7 @@ export class PrivyAuthService {
                 message: params.msg,
             },
         });
-        
+
         this.logger.info("Signed Msg:" + params.id);
         //@ts-ignore
         return res.data;
@@ -62,7 +62,7 @@ export class PrivyAuthService {
             caip2: "eip155:11155111",
             params: {
                 transaction: {
-                     //@ts-ignore
+                    //@ts-ignore
                     to: params.to,
                     value: params.value,
                     chainId: params.chainId,
@@ -76,7 +76,7 @@ export class PrivyAuthService {
                 params.value.toString()
             )
         );
-         //@ts-ignore
+        //@ts-ignore
         return res.data;
     }
 }
