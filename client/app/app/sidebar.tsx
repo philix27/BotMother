@@ -13,7 +13,7 @@ export function Sidebar(props: { items: Employee[] }) {
           <div
             key={i}
             className={cn(
-              'mb-[1px] flex border-b-card flex-col items-start rounded-lg border-b-4 p-2 text-left text-sm transition-all hover:bg-accent',
+              'mb-[1px] flex border-b-card flex-col items-start rounded-lg border-b-4 p-1 text-left text-sm transition-all hover:bg-accent',
               store.active === item.emKey
                 ? 'rounded-none border-b-4 border-b-primary shadow-md'
                 : 'bg-card',
@@ -32,7 +32,6 @@ export function Sidebar(props: { items: Employee[] }) {
                   <div className="flex items-center">
                     <div className="flex items-center gap-2">
                       <p className="text-lg font-medium">{item.name}</p>
-
                       {!item.read && <span className="flex h-2 w-2 rounded-full bg-blue-600" />}
                     </div>
                   </div>

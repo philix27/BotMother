@@ -18,7 +18,7 @@ export const employeeData: {
   },
   {
     name: 'Finance',
-    text: 'Manage your finance',
+    text: 'Lock your savings and earn from interest on them.',
     read: true,
     img: '/employees/cassie.webp',
     color: 'bg-blue-700',
@@ -66,7 +66,7 @@ export const employeeData: {
   },
   {
     name: 'Image Generator',
-    text: 'Help you manage your instagram account',
+    text: 'Generate images and deploy them as NFTS or post on your social media',
     read: true,
     img: '/employees/commet.webp',
     color: 'bg-purple-500',
@@ -74,7 +74,7 @@ export const employeeData: {
   },
   {
     name: 'Lemonade Event Planner',
-    text: 'Help you manage your instagram account',
+    text: 'Create and manage events on Lemonade',
     read: false,
     img: '/employees/uizzy.webp',
     color: 'bg-purple-500',
@@ -82,7 +82,7 @@ export const employeeData: {
   },
   {
     name: 'Web3 Job Scout',
-    text: 'Help you manage your instagram account',
+    text: 'Get notified early on your web3 related jobs',
     read: true,
     img: '/employees/milliPink.webp',
     color: 'bg-purple-500',
