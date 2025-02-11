@@ -1,6 +1,6 @@
 'use client'
 
-import MonoLabel from 'components/MonoLabel'
+import MonoLabel from 'components/privy/MonoLabel'
 import { useAccount, useEnsName } from 'wagmi'
 
 const EnsName = () => {

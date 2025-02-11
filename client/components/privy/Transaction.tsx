@@ -1,6 +1,6 @@
 'use client'
 
-import Wrapper from 'components/Wrapper'
+import Wrapper from 'components/privy/Wrapper'
 import { shorten, type AddressString, stringifyTransaction } from 'lib/utils'
 import { useAccount, useTransaction } from 'wagmi'
 

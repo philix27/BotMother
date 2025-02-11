@@ -1,7 +1,7 @@
 'use client'
 
-import MonoLabel from 'components/MonoLabel'
-import Wrapper from 'components/Wrapper'
+import MonoLabel from 'components/privy/MonoLabel'
+import Wrapper from 'components/privy/Wrapper'
 import { shorten } from 'lib/utils'
 import { useEnsAddress } from 'wagmi'
 

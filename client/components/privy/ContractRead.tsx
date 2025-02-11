@@ -1,6 +1,6 @@
 'use client'
 
-import Wrapper from 'components/Wrapper'
+import Wrapper from 'components/privy/Wrapper'
 import { shorten, type AddressString } from 'lib/utils'
 import { erc721Abi } from 'viem'
 import { useReadContract, useAccount } from 'wagmi'

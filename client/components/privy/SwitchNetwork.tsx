@@ -1,7 +1,7 @@
 'use client'
 
-import Button from 'components/Button'
-import MonoLabel from 'components/MonoLabel'
+import Button from 'components/privy/Button'
+import MonoLabel from 'components/privy/MonoLabel'
 import { useAccount } from 'wagmi'
 import { useSwitchChain } from 'wagmi'
 

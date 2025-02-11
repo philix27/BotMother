@@ -1,6 +1,6 @@
 'use client'
 
-import Wrapper from 'components/Wrapper'
+import Wrapper from 'components/privy/Wrapper'
 import { useFeeData } from 'wagmi'
 
 import MonoLabel from './MonoLabel'

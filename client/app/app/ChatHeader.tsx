@@ -3,7 +3,7 @@
 import { Avatar, AvatarImage } from 'components/ui/avatar'
 import { Tooltip, TooltipContent, TooltipTrigger } from 'components/ui/tooltip'
 import { SidebarOpen } from 'lucide-react'
-import ThemeToggler from 'app/zhome/ThemeToggler'
+import ThemeToggler from 'app/home/ThemeToggler'
 import { ISliceUpdate } from 'lib/zustand/settings'
 
 export function ChatHeader(props: {

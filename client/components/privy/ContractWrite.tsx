@@ -1,6 +1,6 @@
 'use client'
 
-import Wrapper from 'components/Wrapper'
+import Wrapper from 'components/privy/Wrapper'
 import { shorten, type AddressString } from 'lib/utils'
 import { useEffect } from 'react'
 import { parseEther } from 'viem'

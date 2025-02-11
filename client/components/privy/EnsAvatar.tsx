@@ -1,6 +1,6 @@
 'use client'
 
-import Wrapper from 'components/Wrapper'
+import Wrapper from 'components/privy/Wrapper'
 import Image from 'next/image'
 import { useEnsAvatar } from 'wagmi'
 

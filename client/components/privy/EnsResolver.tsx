@@ -1,7 +1,7 @@
 'use client'
 
-import SmallTextArea from 'components/SmallTextArea'
-import Wrapper from 'components/Wrapper'
+import SmallTextArea from 'components/privy/SmallTextArea'
+import Wrapper from 'components/privy/Wrapper'
 import { useEnsResolver } from 'wagmi'
 
 const EnsResolver = () => {

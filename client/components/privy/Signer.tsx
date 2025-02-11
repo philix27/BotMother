@@ -1,6 +1,6 @@
 'use client'
 
-import Wrapper from 'components/Wrapper'
+import Wrapper from 'components/privy/Wrapper'
 import { useEffect, useState } from 'react'
 import { usePublicClient } from 'wagmi'
 import { useWalletClient } from 'wagmi'

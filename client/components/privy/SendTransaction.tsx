@@ -1,7 +1,7 @@
 'use client'
 
-import Button from 'components/Button'
-import Wrapper from 'components/Wrapper'
+import Button from 'components/privy/Button'
+import Wrapper from 'components/privy/Wrapper'
 import { parseEther } from 'viem'
 import type { Config } from 'wagmi'
 import { useSendTransaction } from 'wagmi'

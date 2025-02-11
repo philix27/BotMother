@@ -1,6 +1,6 @@
 'use client'
 
-import Wrapper from 'components/Wrapper'
+import Wrapper from 'components/privy/Wrapper'
 import { type AddressString, stringifyTransaction } from 'lib/utils'
 import { useState } from 'react'
 import type { OnTransactionsParameter } from 'viem'
