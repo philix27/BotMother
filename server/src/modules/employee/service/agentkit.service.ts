@@ -17,12 +17,17 @@ import { getLangChainTools } from "@coinbase/agentkit-langchain";
 import { MemorySaver } from "@langchain/langgraph";
 import { createReactAgent } from "@langchain/langgraph/prebuilt";
 import { ChatOpenAI } from "@langchain/openai";
-import * as fs from "fs";
+// import * as fs from "fs";
 import { messageModifier as walletModifier, modifierTweet } from "./modifiers";
 
 // Configure a file to persist the agent's CDP MPC Wallet Data
-const WALLET_DATA_FILE = "wallet_data.txt";
+// const WALLET_DATA_FILE = "wallet_data.txt";
 // import { LoggerService } from "../../../common";
+const WALLET_DATA = JSON.stringify({
+    walletId: process.env.WALLET_ID,
+    seed: process.env.WALLET_SEED,
+    networkId: process.env.NETWORK_ID,
+});
 
 export class AgentKitService {
     agent: any;
@@ -54,18 +59,18 @@ export class AgentKitService {
                 apiKey: process.env.OPENAI_API_KEY,
             });
 
-            let walletDataStr: string | null = null;
+            let walletDataStr: string = WALLET_DATA;
 
-            // Read existing wallet data if available
-            if (fs.existsSync(WALLET_DATA_FILE)) {
-                try {
-                    console.log("Read existing wallet data if available");
-                    walletDataStr = fs.readFileSync(WALLET_DATA_FILE, "utf8");
-                } catch (error) {
-                    console.error("Error reading wallet data:", error);
-                    // Continue without wallet data
-                }
-            }
+            // // Read existing wallet data if available
+            // if (fs.existsSync(WALLET_DATA_FILE)) {
+            //     try {
+            //         console.log("Read existing wallet data if available");
+            //         walletDataStr = fs.readFileSync(WALLET_DATA_FILE, "utf8");
+            //     } catch (error) {
+            //         console.error("Error reading wallet data:", error);
+            //         // Continue without wallet data
+            //     }
+            // }
 
             // Configure CDP Wallet Provider
             console.log("Before CDP wallet init");
@@ -99,9 +104,9 @@ export class AgentKitService {
                 messageModifier: messageModifier,
             });
 
-            // Save wallet data
-            const exportedWallet = await walletProvider.exportWallet();
-            fs.writeFileSync(WALLET_DATA_FILE, JSON.stringify(exportedWallet));
+            // // Save wallet data
+            // const exportedWallet = await walletProvider.exportWallet();
+            // fs.writeFileSync(WALLET_DATA_FILE, JSON.stringify(exportedWallet));
 
             this.agent = agent;
             this.config = {
