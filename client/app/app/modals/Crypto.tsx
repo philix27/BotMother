@@ -64,7 +64,7 @@ export default function CryptoModal() {
         </div>
 
         <TabsContent value="WALLETS" className="p-2">
-          <InBalance wAddr={address} />
+          <MyBalance />
           <div>
             {!data ? (
               <Spinner />
@@ -100,6 +100,11 @@ export default function CryptoModal() {
   )
 }
 
+function MyBalance() {
+  const ba = useBalance()
+  if (ba.isLoading) return <p className="text-xs text-muted">Bal: ...</p>
+  return <p className="text-md text-muted">Bal: {ba.data?.value.toString()}</p>
+}
 function InBalance(params: { wAddr?: string }) {
   const ba = useBalance({
     address: params.wAddr as `0x${string}`,
