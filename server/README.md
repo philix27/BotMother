@@ -45,7 +45,7 @@ cp .env.example .env
 vi .env
 ```
 
-For a standard development configuration, you can leave the default values for `API_PORT`, `API_PREFIX` and `API_CORS` under the `Api configuration` section. The `SWAGGER_ENABLE` rule allows you to control the Swagger documentation module for NestJS. Leave it to `1` when starting this example.
+For a standard development configuration, you can leave the default values for `PORT`, `API_PREFIX` and `API_CORS` under the `Api configuration` section. The `SWAGGER_ENABLE` rule allows you to control the Swagger documentation module for NestJS. Leave it to `1` when starting this example.
 
 Next comes to the Prisma configuration: change the DATABASE_URL according to your own database setup.
 

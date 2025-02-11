@@ -13,7 +13,7 @@ import { CommonModule, LogInterceptor } from "./modules/common";
  * These are API defaults that can be changed using environment variables,
  * it is not required to change them (see the `.env.example` file)
  */
-const PORT = process.env.API_PORT || 3000;
+const PORT = process.env.PORT || 3000;
 const SWAGGER_STATE =
     !process.env.SWAGGER_ENABLE || process.env.SWAGGER_ENABLE === "1";
 const API_DEFAULT_PREFIX = "/api/v1/";
@@ -72,7 +72,8 @@ async function bootstrap(): Promise<void> {
     app.useGlobalInterceptors(logInterceptor);
     app.enableCors();
     console.log("Listening on port: " + PORT);
-    await app.listen(PORT);
+    await app.listen(PORT, "0.0.0.0");
+    // await app.listen(PORT);
 }
 
 /**

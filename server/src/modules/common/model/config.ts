@@ -1,6 +1,6 @@
 export interface Config {
 
-    readonly API_PORT: number;
+    readonly PORT: number;
 
     readonly API_PREFIX: string;
 
