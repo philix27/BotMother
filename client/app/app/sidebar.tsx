@@ -31,7 +31,7 @@ export function Sidebar(props: { items: Employee[] }) {
                 <div className="mb-3 flex w-full flex-col">
                   <div className="flex items-center">
                     <div className="flex items-center gap-2">
-                      <p className="text-lg font-medium">{item.name}</p>
+                      <p className="text-md font-bold">{item.name}</p>
                       {!item.read && <span className="flex h-2 w-2 rounded-full bg-blue-600" />}
                     </div>
                   </div>

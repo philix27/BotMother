@@ -25,11 +25,11 @@ export function ChatMessage(props: {
               )}
             >
               {val.isMe ? (
-                <p className="p-3 font-light">{val.msg}</p>
+                <p className="text-md p-3 font-light">{val.msg}</p>
               ) : (
                 <Markdown
                   className={
-                    'text-wrap break-words p-3 font-light [&>h3]:pb-3 [&>h3]:font-bold [&>h4]:font-bold [&>p]:pb-2'
+                    'text-md text-wrap break-words p-3 font-light [&>h3]:pb-3 [&>h3]:font-bold [&>h4]:font-bold [&>p]:pb-2'
                   }
                 >
                   {val.msg}

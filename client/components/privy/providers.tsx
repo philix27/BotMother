@@ -8,7 +8,7 @@ import type { PrivyClientConfig } from '@privy-io/react-auth'
 import { PrivyProvider } from '@privy-io/react-auth'
 import { WagmiProvider, createConfig } from '@privy-io/wagmi'
 import { ThemeProvider } from 'next-themes'
-// import { Analytics } from '@vercel/analytics/next'
+import { Analytics } from '@vercel/analytics/next'
 
 const queryClient = new QueryClient()
 
@@ -47,6 +47,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
             {children}
           </ThemeProvider>
         </WagmiProvider>
+        <Analytics />
       </QueryClientProvider>
     </PrivyProvider>
   )
