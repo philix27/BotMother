@@ -13,8 +13,10 @@ export function Sidebar(props: { items: Employee[] }) {
           <div
             key={i}
             className={cn(
-              'mb-1 flex flex-col items-start rounded-lg border-primary text-left text-sm shadow-md transition-all hover:bg-accent',
-              store.active === item.emKey ? 'border-2 border-primary' : 'bg-card',
+              'mb-[1px] flex border-b-card flex-col items-start rounded-lg border-b-4 p-2 text-left text-sm transition-all hover:bg-accent',
+              store.active === item.emKey
+                ? 'rounded-none border-b-4 border-b-primary shadow-md'
+                : 'bg-card',
             )}
             onClick={() => {
               store.update({ active: item.emKey })
@@ -22,10 +24,7 @@ export function Sidebar(props: { items: Employee[] }) {
           >
             <div className="flex w-full">
               <div className="relative h-[80px] w-[120px] min-w-[100px] overflow-y-hidden">
-                <img
-                  src={item.img}
-                  className=" absolute top-[-5px] h-[170%] w-full object-cover"
-                />
+                <img src={item.img} className=" absolute top-[-5px] h-[170%] w-full object-cover" />
               </div>
 
               <div className={cn('px-4 py-2')}>
