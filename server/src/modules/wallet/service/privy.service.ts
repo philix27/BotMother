@@ -1,21 +1,21 @@
 import { Injectable } from "@nestjs/common";
-import { PrivyClient } from "@privy-io/server-auth";
+// import { PrivyClient } from "@privy-io/server-auth";
 import { LoggerService } from "../../common";
 
 @Injectable()
 export class PrivyAuthService {
-    // client: any;
-    client: PrivyClient;
+    client: any;
+    // client: PrivyClient;
 
     public constructor(private readonly logger: LoggerService) {
         this.init();
     }
 
     private async init() {
-        this.client = new PrivyClient(
-            process.env.PRIVY_APP_ID || "",
-            process.env.PRIVY_APP_SECRET || ""
-        );
+        // this.client = new PrivyClient(
+        //     process.env.PRIVY_APP_ID || "",
+        //     process.env.PRIVY_APP_SECRET || ""
+        // );
 
         this.logger.info("Initialized");
     }

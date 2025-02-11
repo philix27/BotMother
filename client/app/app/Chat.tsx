@@ -25,6 +25,7 @@ export default function Chat({ mail }: MailDisplayProps) {
     axios
       .post(process.env.NEXT_PUBLIC_BACKEND_URL + '/employees/send-message', {
         msg: store.chatText[key],
+        agent: 'WALLET',
       })
       .then((res) => {
         store.update({

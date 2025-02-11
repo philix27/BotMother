@@ -5,9 +5,7 @@ import {
     ApiResponse,
     ApiTags,
 } from "@nestjs/swagger";
-
 import { LoggerService } from "../../common";
-
 import { EmployeePipe } from "../flow";
 import { EmployeeData, SendMessageInput } from "../model";
 import { EmployeeService } from "../service";
@@ -26,7 +24,7 @@ export class EmployeeController {
     @ApiResponse({ status: HttpStatus.OK, type: EmployeeData })
     public async sendMessage(
         @Body(EmployeePipe) input: SendMessageInput
-    ): Promise<[]> {
+    ): Promise<string> {
         const res = await this.employeeService.sendMessage(input);
         this.logger.info(`New response sent:` + res);
         return res;

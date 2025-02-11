@@ -9,6 +9,7 @@ export class EmployeePipe extends JoiValidationPipe {
             // @todo When building input validation, also include regex
             // and other techniques for optimal security
             msg: Joi.string().required().max(EmployeeData.NAME_LENGTH),
+            agent: Joi.string().required(),
         });
     }
 }

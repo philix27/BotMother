@@ -59,19 +59,6 @@ export class AgentKitService {
                 apiKey: process.env.OPENAI_API_KEY,
             });
 
-            let walletDataStr: string = WALLET_DATA;
-
-            // // Read existing wallet data if available
-            // if (fs.existsSync(WALLET_DATA_FILE)) {
-            //     try {
-            //         console.log("Read existing wallet data if available");
-            //         walletDataStr = fs.readFileSync(WALLET_DATA_FILE, "utf8");
-            //     } catch (error) {
-            //         console.error("Error reading wallet data:", error);
-            //         // Continue without wallet data
-            //     }
-            // }
-
             // Configure CDP Wallet Provider
             console.log("Before CDP wallet init");
             const walletProvider = await CdpWalletProvider.configureWithWallet({
@@ -80,7 +67,7 @@ export class AgentKitService {
                     /\\n/g,
                     "\n"
                 ),
-                cdpWalletData: walletDataStr || undefined,
+                cdpWalletData: WALLET_DATA || undefined,
                 networkId: process.env.NETWORK_ID || "base-sepolia",
             });
 
@@ -103,10 +90,6 @@ export class AgentKitService {
                 checkpointSaver: memory,
                 messageModifier: messageModifier,
             });
-
-            // // Save wallet data
-            // const exportedWallet = await walletProvider.exportWallet();
-            // fs.writeFileSync(WALLET_DATA_FILE, JSON.stringify(exportedWallet));
 
             this.agent = agent;
             this.config = {
