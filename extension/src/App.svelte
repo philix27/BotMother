@@ -1,22 +1,9 @@
 <script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
-  import TopBar from './comps/TopBar.svelte';
+  import TopBar from "./comps/TopBar.svelte";
+  import Screens from "./comps/Screens.svelte";
 </script>
 
-<main>
+<main class="m-0 w-full flex-col flex bg-background no-scrollbar">
   <TopBar />
-  <div>
-
-  </div>
+  <Screens />
 </main>
-
-<style>
-  main{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  
-</style>

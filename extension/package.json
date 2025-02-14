@@ -1,5 +1,5 @@
 {
-  "name": "extension",
+  "name": "ai_assistant",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,15 +10,21 @@
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json"
   },
   "devDependencies": {
+    "@iconify/svelte": "^4.2.0",
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
     "@tsconfig/svelte": "^5.0.4",
     "@types/chrome": "^0.0.304",
     "autoprefixer": "^10.4.18",
+    "devalue": "^5.1.1",
     "postcss": "^8.4.35",
     "svelte": "^5.19.6",
     "svelte-check": "^4.1.4",
+    "svelte-persisted-store": "^0.12.0",
     "tailwindcss": "^3.4.1",
     "typescript": "~5.7.2",
     "vite": "^6.1.0"
+  },
+  "dependencies": {
+    "tailwind-merge": "^3.0.1"
   }
 }

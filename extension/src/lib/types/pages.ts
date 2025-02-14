@@ -1,0 +1,1 @@
+export type IPages = "HOME" | "TWITTER" | "INSTAGRAM" | "LINKEDIN" | "SETTINGS";
