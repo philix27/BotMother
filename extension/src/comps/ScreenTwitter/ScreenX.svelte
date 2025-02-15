@@ -1,5 +1,6 @@
 <script lang="ts">
-  import NewTweet from "./NewTweet.svelte";
+  import Button from "../../components/button/button.svelte";
+import NewTweet from "./NewTweet.svelte";
 import Tab from "./Tab.svelte";
 
   type ITabs = "ALL" | "PENDING" | "COMPLETED"
@@ -24,8 +25,12 @@ import Tab from "./Tab.svelte";
   ]}
   activeKey={activeTab}
   onClick={(key) => {
-    activeTab = key 
+    activeTab = key  as ITabs
   }}
 />
 
+
 <NewTweet />
+<div class="flex items-center justify-center">
+  <Button size="sm" > Save</Button> 
+</div>
