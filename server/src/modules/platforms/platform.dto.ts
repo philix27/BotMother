@@ -1,4 +1,5 @@
 import { ApiProperty, PickType } from "@nestjs/swagger";
+import { $Enums } from "@prisma/client";
 
 export class PlatformData {
     public static readonly NAME_LENGTH = 50;
@@ -13,7 +14,7 @@ export class PlatformData {
     public readonly lastName: string;
 }
 
-export type IPlatforms = "TWITTER" | "INSTAGRAM" | "LINKEDIN" | "LEMONADE";
+export type IPlatforms = $Enums.Platforms;
 
 export type IAgentTypes =
     | "WALLET"

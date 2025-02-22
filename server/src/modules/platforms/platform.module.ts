@@ -4,10 +4,12 @@ import { PlatformsController } from "./platform.controller";
 import { PlatformService } from "./platform.service";
 import {
     InstagramService,
+    LemonadeService,
     LinkedinService,
     TwitterService,
     WhatsAppService,
 } from "./service";
+import { PlatformManagerService } from "./platform-accounts.service";
 
 @Module({
     imports: [CommonModule],
@@ -17,6 +19,8 @@ import {
         WhatsAppService,
         LinkedinService,
         InstagramService,
+        LemonadeService,
+        PlatformManagerService,
     ],
     controllers: [PlatformsController],
     exports: [],

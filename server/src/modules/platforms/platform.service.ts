@@ -14,6 +14,7 @@ export class PlatformService {
     private TWITTER: TwitterService;
     private LEMONADE: LemonadeService;
     private INSTAGRAM: InstagramService;
+    private FACEBOOK: InstagramService;
     private prisma: PrismaService;
 
     public constructor(private readonly logger: LoggerService) {
@@ -29,10 +30,6 @@ export class PlatformService {
         } catch (error) {
             return "Sorry, I could not process message";
         }
-    }
-
-    public async getPosts(data: { userId: string }): Promise<[]> {
-        return [];
     }
 
     private init = async () => {
@@ -59,6 +56,7 @@ export class PlatformService {
         this.LINKEDIN = new LinkedinService();
         this.LEMONADE = new LemonadeService();
         this.INSTAGRAM = new InstagramService();
+        this.FACEBOOK = new InstagramService();
     };
 
     private _getInstance = (data: SendMessageInput) => {
@@ -67,6 +65,7 @@ export class PlatformService {
             TWITTER: this.TWITTER,
             LEMONADE: this.LEMONADE,
             INSTAGRAM: this.INSTAGRAM,
+            FACEBOOK: this.INSTAGRAM,
         }[data.platform];
     };
 }

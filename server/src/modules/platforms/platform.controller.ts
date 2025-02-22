@@ -9,6 +9,7 @@ import { LoggerService } from "../common";
 import { PlatformPipe } from "./platform.pipe";
 import { PlatformData, SendMessageInput } from "./platform.dto";
 import { PlatformService } from "./platform.service";
+import { PlatformManagerService } from "./platform-accounts.service";
 
 @Controller("platforms")
 @ApiTags("platform")
@@ -16,7 +17,8 @@ import { PlatformService } from "./platform.service";
 export class PlatformsController {
     public constructor(
         private readonly logger: LoggerService,
-        private readonly employeeService: PlatformService
+        private readonly platformService: PlatformService,
+        private readonly manager: PlatformManagerService
     ) {}
 
     @Post("send-post")
@@ -25,7 +27,7 @@ export class PlatformsController {
     public async sendMessage(
         @Body(PlatformPipe) input: SendMessageInput
     ): Promise<string> {
-        const res = await this.employeeService.sendPost(input);
+        const res = await this.platformService.sendPost(input);
         this.logger.info(`New response sent:` + res);
         return res;
     }
@@ -34,7 +36,7 @@ export class PlatformsController {
     @ApiOperation({ summary: "Get Messages" })
     @ApiResponse({ status: HttpStatus.OK, isArray: true, type: PlatformData })
     public async getMessages(@Param("id") userId: string): Promise<[]> {
-        // const res = await this.employeeService.getMessages({ userId });
+        // const res = await this.platformService.getMessages({ userId });
         this.logger.info(`Get messages`);
         return [];
     }

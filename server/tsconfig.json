@@ -15,5 +15,8 @@
     "noUnusedLocals": true
   },
   "include": ["src/**/*"],
+  "paths": {
+    "@/lib": ["./lib", "/lib", "./src/lib"]
+  },
   "exclude": ["node_modules", "**/*.spec.ts"]
 }
